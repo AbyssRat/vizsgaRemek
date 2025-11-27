@@ -1,2 +1,2 @@
 # vizsgaRemek
-köbyv kölcsönzés
+könyv kölcsönzés
