@@ -84,5 +84,3 @@ A projekt célja egy **valósághű könyvtári / könyvkölcsönző rendszer me
 - ER diagram  
 - SQL adatbázis script  
 - Frontend és backend forráskód
-
-csak szólj 🐾💻
