@@ -71,7 +71,7 @@ Nem csak regisztráció, hanem könyvtári realitások.
     -Ki láthat statisztikákat
 *RBAC (Role-Based Access Control)*
 
-**Keresés és szűrés (nagyon fontos UX!)**
+**Keresés és szűrés (fontos UX!)**
 *Gyors kereső (autocomplete)*
     -Szűrés:
         -elérhető könyvek
@@ -79,45 +79,45 @@ Nem csak regisztráció, hanem könyvtári realitások.
         -lejárt tagságú olvasók
     -Részletes lista nézetek
     
-7️⃣ Statisztikák és riportok
-Ez nagyon jól mutat vizsgamunkában / portfólióban.
-Példák:
-Legtöbbet kölcsönzött könyvek
-Aktív olvasók száma
-Késések aránya
-Bevétel késedelmi díjakból
-Havi / éves kimutatások
-8️⃣ Értesítések (haladó funkció)
-Ha szeretnél „wow faktort”.
-Email értesítés:
-kölcsönzés lejárta előtt
-lejárt határidőnél
-foglalás elérhető
-Admin értesítések (pl. sok elveszett könyv)
-9️⃣ Naplózás és audit
-Dolgozói rendszernél nagyon hasznos.
-Ki mikor mit csinált
-Könyv törlés / módosítás log
-Díjmódosítások naplózása
-🔧 Technikai oldal (amit jó, ha dokumentálsz)
-Backend:
-REST API
-Auth (JWT / session)
-Validációk
-Hibakezelés
-Frontend:
-Dashboard
-Táblázatos listák
-Modalok kölcsönzéshez
-Reszponzív UI
-Adatbázis:
-Normalizált séma
-Foreign key-k
-Indexek kereséshez
-🔚 Ha vizsgára / portfólióba készül
-Amit külön plusz pontként értékelnek:
-ER diagram
-Use case diagram
-API dokumentáció (Swagger)
-Seed adatok
-Tesztfelhasználók
+**Statisztikák és riportok**
+*Példák:*
+    -Legtöbbet kölcsönzött könyvek
+    -Aktív olvasók száma
+    -Késések aránya
+    -Bevétel késedelmi díjakból
+    -Havi / éves kimutatások
+
+**Értesítések**
+*Email értesítés:*
+    -kölcsönzés lejárta előtt
+    -lejárt határidőnél
+    -foglalás elérhető
+    -Admin értesítések (pl. sok elveszett könyv)
+
+**Naplózás és audit**
+    -Ki mikor mit csinált
+    -Könyv törlés / módosítás log
+    -Díjmódosítások naplózása
+*Technikai oldal (jó, ha dokumentálva van)*
+    -Backend:
+    -REST API
+    -Auth (JWT / session)
+    -Validációk
+    -Hibakezelés
+*Frontend:*
+    -Dashboard
+    -Táblázatos listák
+    -Modalok kölcsönzéshez
+    -Reszponzív UI
+*Adatbázis:*
+    -Normalizált séma
+    -Foreign key-k
+    -Indexek kereséshez
+
+
+**talán, ha lesz idő**
+    -ER diagram
+    -Use case diagram
+    -API dokumentáció (Swagger)
+    -Seed adatok
+    -Tesztfelhasználók
