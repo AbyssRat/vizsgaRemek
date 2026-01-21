@@ -1,22 +1,85 @@
-# vizsgaRemek
-Könyvkezelés Funkciók: -Könyv CRUD (létrehozás, módosítás, törlés) -ISBN kezelése -Több példány kezelése (pl. 3 db ugyanabból a könyvből) -Könyv státuszok: -elérhető -kikölcsönözve -lefoglalva -elveszett -selejtezett -Kategóriák / műfajok -Szerzők (több szerző is lehessen) -Kiadó, kiadás éve -Polchely / raktári jelzet -Kulcsszavas keresés (cím, szerző, ISBN alapján)
+#📚 Könyvkölcsönző Alkalmazás
 
-DB-szinten: books, book_copies, authors, categories, kapcsolótáblák
+Ez a projekt egy teljes stack könyvkölcsönző rendszer, amely egy MySQL adatbázisból, egy backend alkalmazásból, egy WinForms alapú asztali kliensből, valamint egy React alapú webes felületből áll.
 
-Felhasználókezelés (olvasók) Nem csak regisztráció, hanem könyvtári realitások. Funkciók: -Olvasók CRUD -Tagsági szám / olvasójegy -Tagság érvényessége (lejárati dátum) -Elérhetőségek (email, telefon) -Aktív / tiltott státusz -Könyvtörténet: -mit kölcsönzött -mikor -visszahozta-e -Tartozások megjelenítése
+A rendszer célja a könyvek, szerzők és kölcsönzések kezelése, valamint a felhasználói és admin jogosultságok elkülönítése.
 
-Könyvkölcsönzés
+##🧩 Fő funkciók
 
-Funkciók: -Kölcsönzés indítása -Visszavétel -Hosszabbítás -Maximális kölcsönzési szám kezelése -Kölcsönzési időtartam szabályai -Automatikus státuszváltás -Késedelem automatikus felismerése Extra: -Könyv előjegyzés / foglalás -Előjegyzési sor kezelése
+👤 Felhasználók és adminok kezelése
 
-Késedelmi díjkezelés
+📖 Könyvek és szerzők nyilvántartása
 
-Funkciók: -Napi alapú díjszámítás -Maximális díj limit -Elveszett könyv díjazása -Díj kiegyenlítésének rögzítése -Részfizetés kezelése -Státusz: -tartozása van -kiegyenlítve
+🔁 Könyvkölcsönzések kezelése
 
-Dolgozói jogosultságkezelés
+⏳ Határidők (due date) követése
 
-Szerepkörök: -Admin -Könyvtáros -Gyakornok Jogosultságok: -Ki adhat hozzá könyvet -Ki törölhet -Ki kezelhet díjakat -Ki láthat statisztikákat RBAC (Role-Based Access Control)
+🚦 Kölcsönzés státuszok kezelése (rented, returned, late, lost)
 
-Keresés és szűrés (nagyon fontos UX!) Gyors kereső (autocomplete) -Szűrés: -elérhető könyvek -késésben lévők -lejárt tagságú olvasók -Részletes lista nézetek
+🗂️ ER diagram és relációs adatbázis-struktúra
 
-7️⃣ Statisztikák és riportok Ez nagyon jól mutat vizsgamunkában / portfólióban. Példák: Legtöbbet kölcsönzött könyvek Aktív olvasók száma Késések aránya Bevétel késedelmi díjakból Havi / éves kimutatások 8️⃣ Értesítések (haladó funkció) Ha szeretnél „wow faktort”. Email értesítés: kölcsönzés lejárta előtt lejárt határidőnél foglalás elérhető Admin értesítések (pl. sok elveszett könyv) 9️⃣ Naplózás és audit Dolgozói rendszernél nagyon hasznos. Ki mikor mit csinált Könyv törlés / módosítás log Díjmódosítások naplózása 🔧 Technikai oldal (amit jó, ha dokumentálsz) Backend: REST API Auth (JWT / session) Validációk Hibakezelés Frontend: Dashboard Táblázatos listák Modalok kölcsönzéshez Reszponzív UI Adatbázis: Normalizált séma Foreign key-k Indexek kereséshez 🔚 Ha vizsgára / portfólióba készül Amit külön plusz pontként értékelnek: ER diagram Use case diagram API dokumentáció (Swagger) Seed adatok Tesztfelhasználók
+##🛠️ Felhasznált technológiák
+
+###🗄️ Adatbázis
+
+MySQL
+
+Relációs adatmodell
+
+ER diagrammal tervezve
+
+###⚙️ Backend
+
+MySQL-alapú adatkezelés
+
+Üzleti logika (kölcsönzés, visszahozás, státuszfrissítés)
+
+Kapcsolat a WinForms és React kliensekkel
+
+###🖥️ Asztali alkalmazás
+
+Windows Forms (WinForms)
+
+Adminisztrációs felület
+
+Könyvek, szerzők és kölcsönzések kezelése
+
+###🌐 Webes felület
+
+React
+
+Felhasználóbarát UI
+
+Könyvek böngészése és kölcsönzések megtekintése
+
+##🗂️ Adatbázis felépítése
+
+A rendszer az alábbi fő táblákat használja:
+
+users – felhasználók és adminok
+
+books – könyvek adatai
+
+authors – szerzők
+
+book_authors – könyv–szerző kapcsolat (many-to-many)
+
+rentals – kölcsönzések, határidők és státuszok
+
+📌 Az admin jogosultságot a users.is_admin mező határozza meg.
+
+###🔐 Jogosultságok
+
+Felhasználó
+
+Könyvek megtekintése
+
+Saját kölcsönzések kezelése
+
+Admin
+
+Könyvek és szerzők hozzáadása / módosítása
+
+Kölcsönzések kezelése
+
+Teljes rendszer adminisztrációja
