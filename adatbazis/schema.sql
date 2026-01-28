@@ -1,3 +1,5 @@
+CREATE DATABASE library_management;
+
 -- USERS (with admin support)
 CREATE TABLE users (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
