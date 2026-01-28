@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BookStore.WPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e6df02bd1d5ee017cbc812f1514aa6aee6f5445")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+531579968222ccd66b2677cf084745a792903e32")]
 [assembly: System.Reflection.AssemblyProductAttribute("BookStore.WPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BookStore.WPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
