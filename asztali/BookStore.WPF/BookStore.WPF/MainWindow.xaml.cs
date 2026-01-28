@@ -23,7 +23,7 @@ namespace BookStore.WPF
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            TextBox1.Text = "Hello";
+            
         }
     }
 }
