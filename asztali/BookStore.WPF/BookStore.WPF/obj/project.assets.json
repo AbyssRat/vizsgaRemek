@@ -8,23 +8,23 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\petbal586\\.nuget\\packages\\": {},
+    "C:\\Users\\Bálint\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petbal586\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\szakmai vizsga\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\BookStore.WPF.csproj",
+      "projectUniqueName": "C:\\Users\\Bálint\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\Mesterremek\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\BookStore.WPF.csproj",
       "projectName": "BookStore.WPF",
-      "projectPath": "C:\\Users\\petbal586\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\szakmai vizsga\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\BookStore.WPF.csproj",
-      "packagesPath": "C:\\Users\\petbal586\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petbal586\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\szakmai vizsga\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\obj\\",
+      "projectPath": "C:\\Users\\Bálint\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\Mesterremek\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\BookStore.WPF.csproj",
+      "packagesPath": "C:\\Users\\Bálint\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Bálint\\OneDrive - BGaSzC Logisztikai és Kereskedelmi Technikum és Szakiskola\\Mesterremek\\vizsgaRemek\\asztali\\BookStore.WPF\\BookStore.WPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\petbal586\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Bálint\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -51,7 +51,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.200"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net8.0-windows7.0": {
@@ -75,7 +75,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.201/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,6 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BookStore.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Loaded="Grid_Loaded"/>
+        Title="MainWindow" Height="500" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Oldalsav -->
+        <StackPanel Background="#2C3E50">
+            <TextBlock Text="Admin Panel"
+                       Foreground="White"
+                       FontSize="20"
+                       Margin="10"/>
+
+            <Button Content="Books" Margin="10"/>
+            <Button Content="Users" Margin="10"/>
+            <Button Content="Settings" Margin="10"/>
+        </StackPanel>
+
+        <!-- Fo tartalom -->
+        <Grid Grid.Column="1" Margin="10">
+            <TextBlock Text="Welcome to the admin interface"
+                       FontSize="24"/>
+        </Grid>
+    </Grid>
 </Window>

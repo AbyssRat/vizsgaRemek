@@ -1,3 +1,2 @@
-oke
-:3
-amugy nem oke
+Meg csináltam egy elég kezdetleges ablakot.
+Meg hozzá adtam 3 fájlt.
