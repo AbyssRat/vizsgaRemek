@@ -41,13 +41,13 @@ A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és
 
 # 📐 ERD — Day-to-Day Rental Online E-Book Platform
  
-| Table Name     | Columns / PK / FK                                             | Description / Notes |
-|----------------|---------------------------------------------------------------|-------------------|
-| **USERS**      | `PK user_id`, `username`, `email`, `password_hash`, `is_admin`, `created_at` | Users of the platform, including normal users and admins |
-| **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `file_url`, `preview_url` | E-books; `file_url` for full access, `preview_url` for first page preview |
-| **AUTHORS**    | `PK author_id`, `name`                                        | Authors of books |
-| **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS | Junction table for many-to-many relationship between books and authors |
-| **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) | Tracks each rental: start date, rental duration, and automatic end date |
+| Table Name     | Columns / PK / FK                                             |
+|----------------|---------------------------------------------------------------|
+| **USERS**      | `PK user_id`, `username`, `email`, `password_hash`, `is_admin`, `created_at` |
+| **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `file_url`, `preview_url` |
+| **AUTHORS**    | `PK author_id`, `name`                                        |
+| **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
+| **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
 
 
 ## 🛠️ Felhasznált technológiák
