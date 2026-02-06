@@ -25,7 +25,6 @@
 │ rent_date     │
 │ due_date      │
 │ return_date   │
-│ status        │
 └──────┬────────┘
        │
        │
@@ -36,6 +35,5 @@
 │ title         │
 │ genre         │
 │ publish_year  │
-│ total_copies  │
-│ available     │
+│ ISBN          │
 └───────────────┘
