@@ -6,6 +6,14 @@ A rendszer célja a könyvek, szerzők és kölcsönzések kezelése, valamint a
 
 ---
 
+## 🧍 Csapat
+
+- Ábel Vilmos - Frontend
+- Molnár Dóra - Adatbázis, Backend
+- Petrény-Barócsy Bálint - Asztali
+
+---
+
 ## 🧩 Fő funkciók
 
 - 👤 Felhasználók és adminok kezelése  
