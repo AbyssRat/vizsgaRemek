@@ -7,7 +7,7 @@ A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Reg
 - könyv cím
 - kiadás éve
 - nyelv
-- 
+  
 alapján.
 
 A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizetés után adott ideig olvashat.
