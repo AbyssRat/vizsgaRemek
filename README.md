@@ -1,26 +1,27 @@
-# 📚 Könyvkölcsönző Alkalmazás
+# 📚 Online E-Könyv Platform
 
-Ez a projekt egy **teljes stack könyvkölcsönző rendszer**, amely egy **MySQL adatbázisból**, egy **backend alkalmazásból**, egy **WinForms alapú asztali kliensből**, valamint egy **React alapú webes felületből** áll.
+Ez a projekt egy **teljes stack online e-könyv rendszer**, amely egy **MySQL adatbázisból**, egy **backend alkalmazásból**, valamint egy **React alapú webes felületből** áll.  
 
-A rendszer célja a könyvek, szerzők és kölcsönzések kezelése, valamint a felhasználói és admin jogosultságok elkülönítése.
+A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és hozzáférések nyilvántartásának biztosítása, adminisztrátori felügyelettel.
 
 ---
 
 ## 🧍 Csapat
 
-- Ábel Vilmos - Frontend
-- Molnár Dóra - Adatbázis, Backend
-- Petrény-Barócsy Bálint - Asztali
+- Ábel Vilmos - Frontend  
+- Molnár Dóra - Adatbázis, Backend  
+- Petrény-Barócsy Bálint - Backend, API  
 
 ---
 
 ## 🧩 Fő funkciók
 
-- 👤 Felhasználók és adminok kezelése  
-- 📖 Könyvek és szerzők nyilvántartása  
-- 🔁 Könyvkölcsönzések kezelése  
-- ⏳ Határidők (due date) követése  
-- 🚦 Kölcsönzés státuszok kezelése (`rented`, `returned`, `late`, `lost`)  
+- 👤 Felhasználók regisztrációja, bejelentkezés OAuth2-vel  
+- 📖 E-könyvek nyilvántartása  
+- ✍ Szerzők kezelése  
+- 🔗 Könyv–szerző kapcsolat (many-to-many)  
+- ⏳ Felhasználói e-könyv előfizetések kezelése (start_date / end_date)  
+- 🌐 E-könyvek böngészése és hozzáférés a webes felületen  
 - 🗂️ ER diagram és relációs adatbázis-struktúra  
 
 ---
@@ -29,23 +30,19 @@ A rendszer célja a könyvek, szerzők és kölcsönzések kezelése, valamint a
 
 ### 🗄️ Adatbázis
 - **MySQL**
-- Relációs adatmodell
+- Teljesen normalizált (3NF) adatmodell
 - ER diagrammal tervezve
+- Táblák: `users`, `authors`, `books`, `book_authors`, `user_books`
 
 ### ⚙️ Backend
-- MySQL-alapú adatkezelés
-- Üzleti logika (kölcsönzés, visszahozás, státuszfrissítés)
-- Kapcsolat a WinForms és React kliensekkel
-
-### 🖥️ Asztali alkalmazás
-- **Windows Forms (WinForms)**
-- Adminisztrációs felület
-- Könyvek, szerzők és kölcsönzések kezelése
+- Node.js / Express (vagy bármilyen REST API)
+- OAuth2 hitelesítés
+- Üzleti logika: előfizetések, hozzáférések, admin műveletek
 
 ### 🌐 Webes felület
 - **React**
 - Felhasználóbarát UI
-- Könyvek böngészése és kölcsönzések megtekintése
+- E-könyvek böngészése, hozzáférés, előfizetések megtekintése
 
 ---
 
@@ -54,41 +51,45 @@ A rendszer célja a könyvek, szerzők és kölcsönzések kezelése, valamint a
 A rendszer az alábbi fő táblákat használja:
 
 - **users** – felhasználók és adminok  
-- **books** – könyvek adatai  
 - **authors** – szerzők  
+- **books** – e-könyvek adatai, letöltési / olvasási link  
 - **book_authors** – könyv–szerző kapcsolat (many-to-many)  
-- **rentals** – kölcsönzések, határidők és státuszok  
+- **user_books** – felhasználói e-könyv előfizetések, hozzáférés dátuma  
 
-📌 Az admin jogosultságot a `users.is_admin` mező határozza meg.
+📌 Admin jogosultságot a `users.is_admin` mező határozza meg.
 
 ---
 
 ## 🔐 Jogosultságok
 
 ### 👤 Felhasználó
-- Könyvek megtekintése
-- Saját kölcsönzések kezelése
+- E-könyvek megtekintése
+- Saját előfizetések kezelése
+- Új e-könyv előfizetések vásárlása
 
 ### 🛡️ Admin
-- Könyvek és szerzők hozzáadása / módosítása
-- Kölcsönzések kezelése
-- Teljes rendszer adminisztrációja
+- E-könyvek hozzáadása / módosítása / törlése
+- Szerzők kezelése
+- Felhasználói előfizetések adminisztrációja
+- Teljes rendszer felügyelete
 
 ---
 
 ## 🚀 Projekt célja
 
-A projekt célja egy **valósághű könyvtári / könyvkölcsönző rendszer megvalósítása**, amely bemutatja:
+A projekt célja egy **teljesen online e-könyv platform megvalósítása**, amely bemutatja:
 
-- relációs adatbázis-tervezést,
+- relációs adatbázis-tervezést 3NF-ben,
 - ER diagram használatát,
-- backend–frontend kommunikációt,
-- asztali és webes kliens párhuzamos használatát.
+- backend–frontend kommunikációt REST API-val,
+- OAuth2 alapú felhasználói hitelesítést,
+- digitális előfizetések és hozzáférések kezelését.
 
 ---
 
 ## 📄 Dokumentáció
 
-- ER diagram  
-- SQL adatbázis script  
-- Frontend és backend forráskód
+- ER diagram (Crow’s Foot jelöléssel)  
+- SQL adatbázis script és seed  
+- Frontend és backend forráskód  
+- REST API végpontok dokumentációja
