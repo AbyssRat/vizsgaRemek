@@ -2,17 +2,15 @@
 
 A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után lehetőséget kap a felhasználó jogosultságok vásárlására, amelyek lehetőséget adnak a könyvek tartalmának online megismerésére a vásárolt jogosultság által engedett ideig. A választást azzal szeretnénk segíteni, hogy minden könyvről rövid leírást adunk és az első oldalt mindenki számára elérhetővé teszünk Zöld? Lehetőséget adunk érdeklődésnek megfeléelő könyv keresésére
 
-ISBN szám
-szerző
-könyv cím
-kiadás éve
-nyelv
+- ISBN szám
+- szerző
+- könyv cím
+- kiadás éve
+- nyelv
+- 
 alapján.
 
 A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizetés után adott ideig olvashat.
-
-, amely egy MySQL adatbázisból, egy backend alkalmazásból, valamint egy React alapú webes felületből áll.
-A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és hozzáférések nyilvántartásának biztosítása, adminisztrátori felügyelettel.
 
 ---
 
