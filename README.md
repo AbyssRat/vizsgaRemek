@@ -39,6 +39,14 @@ A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és
 
 ---
 
+## Entitások
+Könyv
+boot_id: automatikusan generált egész típusú érték
+ISBN: karakteresen tárolt numerikus 11? jegyű azonosító
+
+Felhasználó
+
+
 ## 🛠️ Felhasznált technológiák
 
 ### 🗄️ Adatbázis
