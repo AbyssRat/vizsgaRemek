@@ -41,7 +41,7 @@ A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és
 
 ## 📐 Entitások
  
-| Table Name     | Columns / PK / FK                                             |
+| Table Name     | Oszlopok / PK / FK                                             |
 |----------------|---------------------------------------------------------------|
 | **USERS**      | `PK user_id`, `username`, `email`, `password_hash`, `is_admin`, `created_at` |
 | **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `file_url`, `preview_url` |
