@@ -1,39 +1,43 @@
-┌──────────────┐        ┌──────────────┐
-│    USERS     │        │    AUTHORS   │
-├──────────────┤        ├──────────────┤
-│ PK user_id   │        │ PK author_id │
-│ username     │        │ name         │
-│ email        │        └──────┬───────┘
-│ is_admin     │               │
-│ created_at  │               │
-└──────┬───────┘               │
-       │                       │
-       │                       │
-       │               ┌───────▼────────┐
-       │               │  BOOK_AUTHORS  │
-       │               ├────────────────┤
-       │               │ PK book_id     │
-       │               │ PK author_id   │
-       │               └───────┬────────┘
-       │                       │
-┌──────▼────────┐              │
-│    RENTALS    │              │
-├───────────────┤              │
-│ PK rental_id  │              │
-│ FK user_id    │              │
-│ FK book_id    │◄─────────────┘
-│ rent_date     │
-│ due_date      │
-│ return_date   │
-└──────┬────────┘
-       │
-       │
-┌──────▼────────┐
-│     BOOKS     │
-├───────────────┤
-│ PK book_id    │
-│ title         │
-│ genre         │
-│ publish_year  │
-│ ISBN          │
-└───────────────┘
+USERS
+PK user_id
+username
+email
+password_hash
+is_admin
+created_at
+   │
+   │ 1
+   │
+   │ N
+USER_BOOKS
+PK user_book_id
+FK user_id
+FK book_id
+start_date
+end_date
+   │
+   │ N
+   │
+   │ 1
+BOOKS
+PK book_id
+title
+genre
+publish_year
+ISBN
+file_url
+subscription_duration_days
+   │
+   │ 1
+   │
+   │ N
+BOOK_AUTHORS
+PK book_id
+PK author_id
+   │
+   │ N
+   │
+   │ 1
+AUTHORS
+PK author_id
+name
