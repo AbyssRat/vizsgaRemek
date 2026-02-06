@@ -19,8 +19,11 @@ A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és
 - 👤 Felhasználók regisztrációja, bejelentkezés OAuth2-vel  
 - 📖 E-könyvek nyilvántartása  
 - ✍ Szerzők kezelése  
-- 🔗 Könyv–szerző kapcsolat (many-to-many)  
-- ⏳ Felhasználói e-könyv előfizetések kezelése (start_date / end_date)  
+- 🔗 Könyv–szerző kapcsolat (many-to-many)
+- 💵A bérlés időtartalma pénz függvényében változtatható
+- ⏱️ 3-6-12 hónap a lehetésges bérlési idő
+- ⌛ Ingynes olvasási lehetőség, 1 hét free trial
+- 📜 Felhasználói e-könyv előfizetések kezelése (start_date / end_date)  
 - 🌐 E-könyvek böngészése és hozzáférés a webes felületen  
 - 🗂️ ER diagram és relációs adatbázis-struktúra  
 
