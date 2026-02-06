@@ -39,7 +39,7 @@ A rendszer célja az e-könyvek kezelésének, felhasználói előfizetések és
 
 ---
 
-# 📐 ERD — Day-to-Day Rental Online E-Book Platform
+## 📐 Entitások
  
 | Table Name     | Columns / PK / FK                                             |
 |----------------|---------------------------------------------------------------|
