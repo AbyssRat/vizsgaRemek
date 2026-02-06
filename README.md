@@ -1,6 +1,6 @@
 # 📚 Online E-Könyv Kölcsönzés
 
-A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után lehetőséget kap a felhasználó kreditek vásárlására, amelyek lehetőséget adnak a könyvek tartalmának online megismerésére a vásárolt kredit által engedett ideig. A választást azzal szeretnénk segíteni, hogy minden könyvről rövid leírást adunk és az első 1-5 oldalt mindenki számára elérhetővé teszünk Zöld? Lehetőséget adunk érdeklődésnek megfeléelő könyv keresésére
+A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után lehetőséget kap a felhasználó jogosultságok vásárlására, amelyek lehetőséget adnak a könyvek tartalmának online megismerésére a vásárolt jogosultság által engedett ideig. A választást azzal szeretnénk segíteni, hogy minden könyvről rövid leírást adunk és az első oldalt mindenki számára elérhetővé teszünk Zöld? Lehetőséget adunk érdeklődésnek megfeléelő könyv keresésére
 
 ISBN szám
 szerző
