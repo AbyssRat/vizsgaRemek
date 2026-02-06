@@ -47,6 +47,82 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 | **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
 | **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
 
+REST API végpontterv
+ 
+🔐 Hitelesítés (Auth)
+POST /api/auth/register – Új felhasználó regisztrációja.
+POST /api/auth/login – Bejelentkezés (JWT token vagy Session indítása).
+GET /api/auth/oauth/google – OAuth2 bejelentkezés indítása.
+GET /api/auth/me – Bejelentkezett felhasználó adatainak lekérése (profil).
+📖 Könyvek (Books - Publikus & Admin)
+Keresés és Listázás:
+GET /api/books – Összes könyv listázása.
+Query paraméterek a szűréshez: ?isbn=...&author=...&title=...&year=...&lang=...
+Egyedi könyv:
+GET /api/books/:id – Egy könyv részletes adatlapja.
+Admin műveletek:
+POST /api/books – Új könyv feltöltése (Admin only).
+PUT /api/books/:id – Könyv adatainak módosítása (Admin only).
+DELETE /api/books/:id – Könyv törlése (Admin only).
+✍️ Szerzők (Authors)
+GET /api/authors – Szerzők listázása.
+POST /api/authors – Új szerző felvétele (Admin only).
+🛒 Kölcsönzés és Kosár (Rentals)
+A "virtuális kosár" lehet kliens oldali (React state), de a véglegesítés a backendre fut be:
+POST /api/rentals/calculate – Árkalkuláció (input: könyv ID-k + napok száma, output: végösszeg).
+POST /api/rentals – Fizetés és Kölcsönzés indítása.
+Body: [{ book_id: 1, rental_days: 7 }, { book_id: 5, rental_days: 2 }]
+Ez hozza létre a sorokat a USER_BOOKS táblában.
+GET /api/rentals/my-books – A felhasználó aktív kölcsönzéseinek listája (ahonnan olvashat).
+📄 Olvasás (Reader)
+GET /api/read/:book_id/preview – Az első oldal URL-jének visszaadása (Bárki elérheti).
+GET /api/read/:book_id/full – A teljes tartalom elérése.
+Middleware ellenőrzés: Van-e érvényes bejegyzés a user_books táblában és NOW() < end_date?
+ 
+ 
+ 
+usecaseDiagram
+    actor "Vendég (Guest)" as Guest
+    actor "Felhasználó (User)" as User
+    actor "Adminisztrátor (Admin)" as Admin
+ 
+    package "E-Könyv Rendszer" {
+        usecase "Regisztráció / Bejelentkezés" as UC1
+        usecase "Könyvek keresése (ISBN, Cím, Szerző)" as UC2
+        usecase "Előnézet (Első oldal) megtekintése" as UC3
+       
+        usecase "Könyv kosárba helyezése" as UC4
+        usecase "Kölcsönzési idő kiválasztása" as UC5
+        usecase "Fizetés és Kölcsönzés" as UC6
+        usecase "Teljes könyv olvasása" as UC7
+        usecase "Saját bérlések megtekintése" as UC8
+ 
+        usecase "Új könyv felvétele" as UC9
+        usecase "Könyv szerkesztése / törlése" as UC10
+        usecase "Szerzők kezelése" as UC11
+        usecase "Felhasználók kezelése" as UC12
+    }
+ 
+    %% Öröklődés: A User tudja mindazt, amit a Guest, az Admin mindazt, amit a User
+    Guest <|-- User
+    User <|-- Admin
+ 
+    %% Kapcsolatok
+    Guest --> UC1
+    Guest --> UC2
+    Guest --> UC3
+ 
+    User --> UC4
+    User --> UC5
+    User --> UC6
+    User --> UC7
+    User --> UC8
+ 
+    Admin --> UC9
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
+ 
 
 ## 🛠️ Felhasznált technológiák
 
