@@ -1,4 +1,4 @@
-# 📚 Online E-Könyv Platform
+# 📚 Online E-Könyv Kölcsönzés
 
 Ez a projekt egy **teljes stack online e-könyv rendszer**, amely egy **MySQL adatbázisból**, egy **backend alkalmazásból**, valamint egy **React alapú webes felületből** áll.  
 
