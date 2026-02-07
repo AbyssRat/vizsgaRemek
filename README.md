@@ -106,10 +106,10 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 ### 🔑 Hitelesítési fejléc
 A védett végpontokhoz add hozzá ezt a fejlécet:
 
-```http
+
 Authorization: Bearer SAJÁT_JWT_TOKEN
 
- 
+
 usecaseDiagram
     actor "Vendég (Guest)" as Guest
     actor "Felhasználó (User)" as User
