@@ -47,54 +47,34 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 | **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
 | **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
 
-**REST API végpontterv**
- 
-**🔐 Hitelesítés (Auth)**
--*POST /api/auth/register* – Új felhasználó regisztrációja.
-
--*POST /api/auth/login* – Bejelentkezés (JWT token vagy Session indítása).
-
--*GET /api/auth/oauth/google* – OAuth2 bejelentkezés indítása.
-
--*GET /api/auth/me* – Bejelentkezett felhasználó adatainak lekérése (profil).
-
-**📖 Könyvek (Books - Publikus & Admin)
-Keresés és Listázás:**
--*GET /api/books* – Összes könyv listázása.
-
--Query paraméterek a szűréshez: *?isbn=...&author=...&title=...&year=...&lang=...*
-Egyedi könyv:
-
--*GET /api/books/:id* – Egy könyv részletes adatlapja.
-
-Admin műveletek:
--*POST /api/books* – Új könyv feltöltése (Admin only).
-
--*PUT /api/books/:id* – Könyv adatainak módosítása (Admin only).
-
--*DELETE /api/books/:id* – Könyv törlése (Admin only).
-
-**✍️ Szerzők (Authors)**
--*GET /api/authors* – Szerzők listázása.
--*POST /api/authors* – Új szerző felvétele (Admin only).
-
-**🛒 Kölcsönzés és Kosár (Rentals)**
-A "virtuális kosár" lehet kliens oldali (React state), de a véglegesítés a backendre fut be:
--*POST /api/rentals/calculate* – Árkalkuláció (input: könyv ID-k + napok száma, output: végösszeg).
-
--*POST /api/rentals* – Fizetés és Kölcsönzés indítása.
-
--Body: *[{ book_id: 1, rental_days: 7 }, { book_id: 5, rental_days: 2 }]*
-  Ez hozza létre a sorokat a USER_BOOKS táblában.
-  
--*GET /api/rentals/my-books* – A felhasználó aktív kölcsönzéseinek listája (ahonnan olvashat).
-
-**📄 Olvasás (Reader)**
--*GET /api/read/:book_id/preview* – Az első oldal URL-jének visszaadása (Bárki elérheti).
-
--*GET /api/read/:book_id/full* – A teljes tartalom elérése.
-
-Middleware ellenőrzés: Van-e érvényes bejegyzés a user_books táblában és NOW() < end_date?
+📡 API Endpoints
+🔐 Authentication
+Method	Endpoint	Auth Required	Description
+POST	/api/auth/register	❌	Register a new user
+POST	/api/auth/login	❌	Login user, returns JWT token
+GET	/api/auth/me	✅	Get current logged-in user
+👤 Users
+Method	Endpoint	Auth Required	Description
+GET	/api/users	✅ (Admin)	Get all users
+GET	/api/users/:id	✅	Get user by ID
+DELETE	/api/users/:id	✅ (Admin)	Delete user
+📚 Books
+Method	Endpoint	Auth Required	Description
+GET	/api/books	❌	Get all books
+GET	/api/books/:id	❌	Get book by ID
+POST	/api/books	✅ (Admin)	Add a new book
+PUT	/api/books/:id	✅ (Admin)	Update a book
+DELETE	/api/books/:id	✅ (Admin)	Delete a book
+📄 Book Pages / Preview
+Method	Endpoint	Auth Required	Description
+GET	/api/books/:id/pages/1	❌	Get first (free) page
+GET	/api/books/:id/pages/:page	✅	Get a rented book page
+📦 Rentals
+Method	Endpoint	Auth Required	Description
+POST	/api/rentals	✅	Rent a book for X days
+GET	/api/rentals/my	✅	Get current user rentals
+GET	/api/rentals	✅ (Admin)	Get all rentals
+DELETE	/api/rentals/:id	✅	Cancel a rental
  
  
 usecaseDiagram
