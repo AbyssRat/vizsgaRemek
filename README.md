@@ -47,35 +47,68 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 | **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
 | **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
 
-📡 API Endpoints
-🔐 Authentication
-Method	Endpoint	Auth Required	Description
-POST	/api/auth/register	❌	Register a new user
-POST	/api/auth/login	❌	Login user, returns JWT token
-GET	/api/auth/me	✅	Get current logged-in user
-👤 Users
-Method	Endpoint	Auth Required	Description
-GET	/api/users	✅ (Admin)	Get all users
-GET	/api/users/:id	✅	Get user by ID
-DELETE	/api/users/:id	✅ (Admin)	Delete user
-📚 Books
-Method	Endpoint	Auth Required	Description
-GET	/api/books	❌	Get all books
-GET	/api/books/:id	❌	Get book by ID
-POST	/api/books	✅ (Admin)	Add a new book
-PUT	/api/books/:id	✅ (Admin)	Update a book
-DELETE	/api/books/:id	✅ (Admin)	Delete a book
-📄 Book Pages / Preview
-Method	Endpoint	Auth Required	Description
-GET	/api/books/:id/pages/1	❌	Get first (free) page
-GET	/api/books/:id/pages/:page	✅	Get a rented book page
-📦 Rentals
-Method	Endpoint	Auth Required	Description
-POST	/api/rentals	✅	Rent a book for X days
-GET	/api/rentals/my	✅	Get current user rentals
-GET	/api/rentals	✅ (Admin)	Get all rentals
-DELETE	/api/rentals/:id	✅	Cancel a rental
- 
+## 📡 API Végpontok
+
+### 🔐 Hitelesítés
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| POST | `/api/auth/register` | Nem | Új felhasználó regisztrálása |
+| POST | `/api/auth/login` | Nem | Felhasználó bejelentkezése, JWT token visszaadása |
+| GET | `/api/auth/me` | Igen | Jelenleg bejelentkezett felhasználó lekérése |
+
+---
+
+### 👤 Felhasználók
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| GET | `/api/users` | Igen (Admin) | Összes felhasználó lekérése |
+| GET | `/api/users/:id` | Igen | Felhasználó lekérése ID alapján |
+| DELETE | `/api/users/:id` | Igen (Admin) | Felhasználó törlése |
+
+---
+
+### 📚 Könyvek
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| GET | `/api/books` | Nem | Összes könyv lekérése |
+| GET | `/api/books/:id` | Nem | Könyv lekérése ID alapján |
+| POST | `/api/books` | Igen (Admin) | Új könyv hozzáadása |
+| PUT | `/api/books/:id` | Igen (Admin) | Könyv frissítése |
+| DELETE | `/api/books/:id` | Igen (Admin) | Könyv törlése |
+
+---
+
+### 📄 Könyv oldalak / Előnézet
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| GET | `/api/books/:id/pages/1` | Nem | Első (ingyenes) oldal lekérése |
+| GET | `/api/books/:id/pages/:page` | Igen | Bérelhető könyv oldal lekérése |
+
+---
+
+### 📦 Könyvbérlés
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| POST | `/api/rentals` | Igen | Könyv kölcsönzése X napra |
+| GET | `/api/rentals/my` | Igen | Jelenlegi felhasználó kölcsönzései |
+| GET | `/api/rentals` | Igen (Admin) | Összes kölcsönzés lekérése |
+| DELETE | `/api/rentals/:id` | Igen | Könyvkölcsönzés törlése |
+
+---
+
+### 🧪 Segédfunkciók
+| Módszer | Végpont | Hitelesítés szükséges | Leírás |
+|------|---------|---------------------|--------|
+| GET | `/api/health` | Nem | Szerver állapot ellenőrzése |
+
+---
+
+### 🔑 Hitelesítési fejléc
+A védett végpontokhoz add hozzá ezt a fejlécet:
+
+```http
+Authorization: Bearer SAJÁT_JWT_TOKEN
+
  
 usecaseDiagram
     actor "Vendég (Guest)" as Guest
