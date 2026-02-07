@@ -12,6 +12,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 app.use("/api/rentals", rentalRoutes);
 
+
+app.get("/api/health", (req, res) => {
+  res.status(200).json({ status: "ok", timestamp: new Date() });
+});
+
+
 app.use(errorMiddleware);
 
 export default app;
