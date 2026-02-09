@@ -42,8 +42,8 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 | Table Name     | Oszlopok / PK / FK                                             |
 |----------------|---------------------------------------------------------------|
 | **USERS**      | `PK user_id`, `username`, `email`, `password_hash`, `is_admin`, `created_at`, `google_id` |
-| **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `file_url`, `preview_url` |
-| **AUTHORS**    | `PK author_id`, `name`                                        |
+| **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `language`, `file_url`, `preview_url`, `cover_url` |
+| **AUTHORS**    | `PK author_id`, `name`, `bio`                                       |
 | **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
 | **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
 
