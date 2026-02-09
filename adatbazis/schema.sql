@@ -36,7 +36,7 @@ CREATE TABLE books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     genre ENUM('Fantasy', 'Science Fiction', 'Romance', 'Thriller', 'Non-Fiction', 'Mystery', 'Horror', 'Other') DEFAULT 'Other',
-    language ENUM('English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Other') DEFAULT 'English',
+    language ENUM('Hungarian', 'English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Other') DEFAULT 'Hungarian',
     publish_year YEAR,
     ISBN VARCHAR(20) UNIQUE,
     file_url VARCHAR(255) NOT NULL,
