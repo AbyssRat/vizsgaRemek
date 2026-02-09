@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import './styles/App.css'
+import { useAuth } from './auth/authContext';
 
 function App() {
 
-  console.log("App.jsx rendered")
+  const auth = useAuth();
+  console.log("Auth state in App.jsx:", auth);
 
   return (
     <>
-    
+    auth???
 
     </>
   )
