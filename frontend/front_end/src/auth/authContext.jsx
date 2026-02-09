@@ -21,14 +21,25 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (credentials) => {
-        const res = await api.post("/auth/login", credentials);
+       const res = await api.post("/auth/login", credentials);
 
-        setToken(res.data.token);
-        setUser(res.data.user);
+       setToken(res.data.token);
+       setUser(res.data.user);
 
-        localStorage.setItem("token", res.data.token);
+     localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-    };
+    }
+
+    // const login = async () => {
+    //     const fakeUser = {id : 1, email: "testuser@test.hu"};
+    //     const fakeToken = "fake-jwt-token";
+    
+    //     setUser(fakeUser);
+    //     setToken(fakeToken);
+    
+    //     localStorage.setItem("token", fakeToken);
+    //     localStorage.setItem("user", JSON.stringify(fakeUser));
+    // }
 
     const register = async (data) => {
         await api.post("/auth/register", data);
@@ -53,6 +64,8 @@ export const AuthProvider = ({ children }) => {
         </AuthContext.Provider>
     );
 };
+
+
 
 export const useAuth = () => {
     return useContext(AuthContext);
