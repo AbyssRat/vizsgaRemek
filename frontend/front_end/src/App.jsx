@@ -3,8 +3,11 @@ import './styles/App.css'
 
 function App() {
 
+  console.log("App.jsx rendered")
+
   return (
     <>
+    
 
     </>
   )
