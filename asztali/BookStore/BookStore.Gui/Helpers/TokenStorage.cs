@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BookStore.Gui.Helpers
 {
-    internal class TokenStorage
+    public static class TokenStorage
     {
+        public static string Token { get; set; }
     }
 }
