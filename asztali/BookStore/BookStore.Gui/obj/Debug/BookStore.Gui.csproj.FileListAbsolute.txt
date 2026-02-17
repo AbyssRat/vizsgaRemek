@@ -1,0 +1,10 @@
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.csproj.AssemblyReference.cache
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.Form1.resources
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.Properties.Resources.resources
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.csproj.GenerateResource.cache
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.csproj.CoreCompileInputs.cache
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\bin\Debug\BookStore.Gui.exe.config
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\bin\Debug\BookStore.Gui.exe
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\bin\Debug\BookStore.Gui.pdb
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.exe
+C:\Users\petbal586\Desktop\vizsgaremek\vizsgaRemek\asztali\BookStore\BookStore.Gui\obj\Debug\BookStore.Gui.pdb
