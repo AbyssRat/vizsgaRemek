@@ -1,30 +1,46 @@
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Books from './pages/Books'
+import BookDetails from './pages/BookDetails'
+import Login from './pages/Login'
+import Profile from './pages/Profile'
+import Rentals from './pages/Rentals'
+import Register from './pages/Register'
+
+import ProtectedRoute from './components/ProtectedRoute'
+
 import { useState } from 'react'
 import './styles/App.css'
 import { useAuth } from './auth/authContext';
 
 function App() {
-  const { user, login, logout, loading } = useAuth();
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  
-
   return (
     <>
-      {/* <div style={{ padding: 20 }}>
-      <h1>Auth test</h1>
- 
-      <pre>{JSON.stringify(user, null, 2)}</pre>
- 
-      {!user ? (
-        <button onClick={login}>Fake login</button>
-      ) : (
-        <button onClick={logout}>Logout</button>
-      )}
-    </div> */}
-
+    <Navbar />
+      <Routes>
+        <Route path="/" element={<Books />} />
+        <Route path="/book/:id" element={<BookDetails />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/rentals"
+          element={
+            <ProtectedRoute>
+              <Rentals />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    
     </>
   )
 }
