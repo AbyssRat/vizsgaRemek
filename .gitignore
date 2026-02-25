@@ -1,3 +1,9 @@
 node_modules
 .vs/
 backend/.env
+bin/
+obj/
+*.user
+*.suo
+*.exe
+*.dll
