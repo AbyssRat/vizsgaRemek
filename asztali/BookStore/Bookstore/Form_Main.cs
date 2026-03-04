@@ -20,13 +20,17 @@ namespace Bookstore
         private void pictureBox_user_Click(object sender, EventArgs e)
         {
             Form_User form_User = new Form_User();
+            this.Hide();
             form_User.ShowDialog();
+            this.Show();
         }
 
         private void pictureBox_book_Click(object sender, EventArgs e)
         {
             Form_Book form_Book = new Form_Book();
+            this.Hide();
             form_Book.ShowDialog();
+            this.Show();
         }
 
         private void pictureBox_rent_Click(object sender, EventArgs e)
@@ -35,6 +39,7 @@ namespace Bookstore
             this.Hide();
             form_Rent.ShowDialog();
             this.Show();
+            
         }
 
         private void pictureBox_exit_Click(object sender, EventArgs e)

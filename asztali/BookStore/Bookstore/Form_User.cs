@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Bookstore
 {
@@ -15,6 +16,11 @@ namespace Bookstore
         public Form_User()
         {
             InitializeComponent();
+        }
+
+        private void pictureBox_exit_Click(object sender, EventArgs e)
+        {
+            Form_User.ActiveForm.Close();
         }
     }
 }

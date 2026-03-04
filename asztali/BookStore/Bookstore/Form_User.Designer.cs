@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox_exit = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -40,14 +42,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "User";
             // 
+            // pictureBox_exit
+            // 
+            this.pictureBox_exit.Image = global::Bookstore.Properties.Resources.ikon_exit;
+            this.pictureBox_exit.Location = new System.Drawing.Point(692, 374);
+            this.pictureBox_exit.Name = "pictureBox_exit";
+            this.pictureBox_exit.Size = new System.Drawing.Size(96, 64);
+            this.pictureBox_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox_exit.TabIndex = 1;
+            this.pictureBox_exit.TabStop = false;
+            this.pictureBox_exit.Click += new System.EventHandler(this.pictureBox_exit_Click);
+            // 
             // Form_User
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pictureBox_exit);
             this.Controls.Add(this.label1);
             this.Name = "Form_User";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_User";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -56,5 +72,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox_exit;
     }
 }

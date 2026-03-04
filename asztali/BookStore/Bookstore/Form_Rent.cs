@@ -16,5 +16,10 @@ namespace Bookstore
         {
             InitializeComponent();
         }
+
+        private void pictureBox_exit_Click(object sender, EventArgs e)
+        {
+            Form_Rent.ActiveForm.Close();
+        }
     }
 }
