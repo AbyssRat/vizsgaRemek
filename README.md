@@ -17,7 +17,7 @@ A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizet
 ## 🧍 Csapat
 
 - Ábel Vilmos - Frontend  
-- Molnár Dóra - Adatbázis, Backend  
+- Molnár Dóra - Adatbázis, Backend, Frontend, Design
 - Petrény-Barócsy Bálint - Backend, API  
 
 ---
