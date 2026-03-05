@@ -1,5 +1,4 @@
 import express from "express";
-import passport from "passport";
 import { login, register } from "../controllers/authController.js";
 import { issueToken } from "../utils/jwt.js";
 
