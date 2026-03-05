@@ -1,4 +1,5 @@
 ```mermaid
+flowchart LR
 USERS {
     INT user_id PK
     VARCHAR username
