@@ -1,4 +1,4 @@
-erDiagram
+´´´mermaid
 
 USERS {
     INT user_id PK
