@@ -1,5 +1,4 @@
-´´´mermaid
-
+```mermaid
 USERS {
     INT user_id PK
     VARCHAR username
