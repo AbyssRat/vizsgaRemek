@@ -1,85 +1,33 @@
--- =========================
--- USERS (demo accounts)
--- =========================
-INSERT INTO users (username, email, password_hash, is_admin)
-VALUES
-('admin', 'admin@bookapp.hu', 'hashed_admin_password', TRUE),
-('anna', 'anna@bookapp.hu', 'hashed_password_anna', FALSE),
-('bence', 'bence@bookapp.hu', 'hashed_password_bence', FALSE);
+USE book_rental_app;
 
--- =========================
--- AUTHORS (Hungarian)
--- =========================
-INSERT INTO authors (name)
-VALUES
-('Jókai Mór'),
-('Móricz Zsigmond'),
-('Kosztolányi Dezső'),
-('Szabó Magda'),
-('Kertész Imre');
+-- USERS
+INSERT INTO users (username,email,password_hash,credits,is_admin) VALUES
+('admin','admin@books.com','hashed_pw',100,TRUE),
+('alice','alice@email.com','hashed_pw',20,FALSE),
+('bob','bob@email.com','hashed_pw',15,FALSE);
 
--- =========================
--- BOOKS (Hungarian literature)
--- =========================
-INSERT INTO books (title, genre, publish_year, ISBN, file_url, preview_url)
-VALUES
-(
-  'Az arany ember',
-  'Regény',
-  1872,
-  '9789630000001',
-  '/books/az_arany_ember.pdf',
-  '/previews/az_arany_ember_preview.pdf'
-),
-(
-  'Légy jó mindhalálig',
-  'Regény',
-  1920,
-  '9789630000002',
-  '/books/legy_jo_mindhalalig.pdf',
-  '/previews/legy_jo_mindhalalig_preview.pdf'
-),
-(
-  'Édes Anna',
-  'Regény',
-  1926,
-  '9789630000003',
-  '/books/edes_anna.pdf',
-  '/previews/edes_anna_preview.pdf'
-),
-(
-  'Abigél',
-  'Ifjúsági regény',
-  1970,
-  '9789630000004',
-  '/books/abigel.pdf',
-  '/previews/abigel_preview.pdf'
-),
-(
-  'Sorstalanság',
-  'Regény',
-  1975,
-  '9789630000005',
-  '/books/sorstalansag.pdf',
-  '/previews/sorstalansag_preview.pdf'
-);
+-- AUTHORS
+INSERT INTO authors (name,bio) VALUES
+('J.R.R. Tolkien','Author of The Lord of the Rings'),
+('George Orwell','English novelist and critic'),
+('Mary Shelley','Author of Frankenstein'),
+('Frank Herbert','Author of Dune');
 
--- =========================
--- BOOK_AUTHORS
--- =========================
-INSERT INTO book_authors (book_id, author_id)
-VALUES
-(1, 1), -- Az arany ember → Jókai Mór
-(2, 2), -- Légy jó mindhalálig → Móricz Zsigmond
-(3, 3), -- Édes Anna → Kosztolányi Dezső
-(4, 4), -- Abigél → Szabó Magda
-(5, 5); -- Sorstalanság → Kertész Imre
+-- BOOKS
+INSERT INTO books (title,genre,language,publish_year,ISBN,file_url,preview_url,cover_url) VALUES
+('The Hobbit','Fantasy','English',1937,'9780547928227','/books/hobbit.pdf','/preview/hobbit.pdf','/covers/hobbit.jpg'),
+('1984','Science Fiction','English',1949,'9780451524935','/books/1984.pdf','/preview/1984.pdf','/covers/1984.jpg'),
+('Frankenstein','Horror','English',1818,'9780486282114','/books/frankenstein.pdf','/preview/frankenstein.pdf','/covers/frankenstein.jpg'),
+('Dune','Science Fiction','English',1965,'9780441172719','/books/dune.pdf','/preview/dune.pdf','/covers/dune.jpg');
 
--- =========================
--- USER_BOOKS (rentals)
--- =========================
-INSERT INTO user_books (user_id, book_id, start_date, rental_days)
-VALUES
-(2, 1, '2026-02-01', 7),
-(2, 4, '2026-02-03', 14),
-(3, 5, '2026-02-05', 10);
+-- BOOK AUTHORS
+INSERT INTO book_authors VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4);
+
+-- RENTALS
+INSERT INTO user_books (user_id,book_id,start_date,rental_days,credits_spent) VALUES
+(2,1,'2026-03-01',3,7),
+(3,2,'2026-03-02',2,6);
