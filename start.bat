@@ -12,10 +12,10 @@ set SEED_FILE=%~dp0adatbazis\seed.sql
 :: START APACHE & MYSQL
 :: =======================
 echo Starting Apache...
-start "" "%XAMPP_PATH%\apache_start.bat"
+start "" /b "%XAMPP_PATH%\apache_start.bat"
 
 echo Starting MySQL...
-start "" "%XAMPP_PATH%\mysql_start.bat"
+start "" /b "%XAMPP_PATH%\mysql_start.bat"
 
 :: Wait a few seconds for services to initialize
 echo Waiting for MySQL to be ready...
@@ -50,19 +50,21 @@ echo Importing seed data...
 "%MYSQL_EXE%" -u root < "%SEED_FILE%"
 
 :: =======================
-:: START BACKEND
+:: START BACKEND IN BACKGROUND
 :: =======================
-start "Backend" cmd /k "cd /d backend && npm install && npm run dev"
+start "" /b cmd /c "cd /d backend && npm install && npm run dev > nul 2>&1"
 
 :: Wait a few seconds
 timeout /t 3 /nobreak >nul
 
 :: =======================
-:: START FRONTEND
+:: START FRONTEND IN BACKGROUND
 :: =======================
-start "Frontend" cmd /k "cd /d frontend\front_end && npm install && npm run dev"
+start "" /b cmd /c "cd /d frontend\front_end && npm install && npm run dev > nul 2>&1"
 
-:: Open frontend in default browser
+:: =======================
+:: OPEN FRONTEND IN BROWSER
+:: =======================
 start "" "http://localhost:5173"
 
 echo All done! Backend, frontend, and database are running.
