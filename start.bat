@@ -32,19 +32,22 @@ if errorlevel 1 (
 echo MySQL is ready!
 
 :: =======================
-:: CREATE DATABASE IF NOT EXISTS
+:: DROP OLD DATABASE
 :: =======================
-echo Ensuring database "%DB_NAME%" exists...
-"%MYSQL_EXE%" -u root -e "CREATE DATABASE IF NOT EXISTS %DB_NAME%;"
+echo Dropping old database if it exists...
+"%MYSQL_EXE%" -u root -e "DROP DATABASE IF EXISTS %DB_NAME%;"
 
 :: =======================
-:: IMPORT SCHEMA AND SEED
+:: IMPORT SCHEMA
 :: =======================
 echo Importing schema...
-"%MYSQL_EXE%" -u root %DB_NAME% < %SCHEMA_FILE%
+"%MYSQL_EXE%" -u root < "%SCHEMA_FILE%"
 
+:: =======================
+:: IMPORT SEED DATA
+:: =======================
 echo Importing seed data...
-"%MYSQL_EXE%" -u root %DB_NAME% < %SEED_FILE%
+"%MYSQL_EXE%" -u root < "%SEED_FILE%"
 
 :: =======================
 :: START BACKEND
