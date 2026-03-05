@@ -1,15 +1,66 @@
 @echo off
-:: Start Backend
+:: =======================
+:: CONFIGURATION
+:: =======================
+set XAMPP_PATH=C:\xampp
+set MYSQL_EXE=%XAMPP_PATH%\mysql\bin\mysql.exe
+set DB_NAME=book_rental_app
+set SCHEMA_FILE=%~dp0adatbazis\schema.sql
+set SEED_FILE=%~dp0adatbazis\seed.sql
+
+:: =======================
+:: START APACHE & MYSQL
+:: =======================
+echo Starting Apache...
+start "" "%XAMPP_PATH%\apache_start.bat"
+
+echo Starting MySQL...
+start "" "%XAMPP_PATH%\mysql_start.bat"
+
+:: Wait a few seconds for services to initialize
+echo Waiting for MySQL to be ready...
+timeout /t 5 /nobreak >nul
+
+:: Loop to check if MySQL is up
+:check_mysql
+"%MYSQL_EXE%" -u root -e "quit" 2>nul
+if errorlevel 1 (
+    echo MySQL not ready yet... waiting 2 seconds
+    timeout /t 2 /nobreak >nul
+    goto check_mysql
+)
+echo MySQL is ready!
+
+:: =======================
+:: CREATE DATABASE IF NOT EXISTS
+:: =======================
+echo Ensuring database "%DB_NAME%" exists...
+"%MYSQL_EXE%" -u root -e "CREATE DATABASE IF NOT EXISTS %DB_NAME%;"
+
+:: =======================
+:: IMPORT SCHEMA AND SEED
+:: =======================
+echo Importing schema...
+"%MYSQL_EXE%" -u root %DB_NAME% < %SCHEMA_FILE%
+
+echo Importing seed data...
+"%MYSQL_EXE%" -u root %DB_NAME% < %SEED_FILE%
+
+:: =======================
+:: START BACKEND
+:: =======================
 start "Backend" cmd /k "cd /d backend && npm install && npm run dev"
 
-:: Give backend a few seconds to start (optional)
+:: Wait a few seconds
 timeout /t 3 /nobreak >nul
 
-:: Start Frontend
+:: =======================
+:: START FRONTEND
+:: =======================
 start "Frontend" cmd /k "cd /d frontend\front_end && npm install && npm run dev"
 
 :: Open frontend in default browser
 start "" "http://localhost:5173"
 
-echo Backend and Frontend started.
+echo All done! Backend, frontend, and database are running.
 pause
