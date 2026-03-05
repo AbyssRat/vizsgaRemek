@@ -35,8 +35,13 @@ CREATE TABLE authors (
 CREATE TABLE books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
     genre ENUM('Fantasy','Science Fiction','Romance','Thriller','Non-Fiction','Mystery','Horror','Other') DEFAULT 'Other',
     language ENUM('English','Spanish','French','German','Chinese','Japanese','Other') DEFAULT 'English',
+=======
+    genre ENUM('Fantasy', 'Science Fiction', 'Romance', 'Thriller', 'Non-Fiction', 'Mystery', 'Horror', 'Other') DEFAULT 'Other',
+    language ENUM('Hungarian', 'English', 'Spanish', 'French', 'German', 'Chinese', 'Japanese', 'Other') DEFAULT 'Hungarian',
+>>>>>>> 56955960aea150c4478537f3d5fe4472b6034ac5
     publish_year YEAR,
     ISBN VARCHAR(20) UNIQUE,
     file_url VARCHAR(255) NOT NULL,
