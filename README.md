@@ -234,7 +234,7 @@ A projekt futtatásához szükséges lépések:
 ### 1️⃣ Repository letöltése
 
 ```
-git clone https://github.com/REPO_LINK
+git clone https://github.com/AbyssRat/vizsgaRemek.git
 ```
 
 vagy a repository letöltése ZIP formátumban.
