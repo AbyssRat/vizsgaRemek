@@ -52,7 +52,7 @@ echo Importing seed data...
 :: =======================
 :: START BACKEND IN BACKGROUND
 :: =======================
-start "" /b cmd /c "cd /d backend && npm install && npm run dev > nul 2>&1"
+start "" /b cmd /c "cd /d backend && npm install && node server.js > nul 2>&1"
 
 :: Wait a few seconds
 timeout /t 3 /nobreak >nul
