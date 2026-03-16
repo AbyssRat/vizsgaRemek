@@ -21,5 +21,30 @@ namespace Bookstore
         {
             Form_Rent.ActiveForm.Close();
         }
+
+        private void Form_Rent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxRents_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
