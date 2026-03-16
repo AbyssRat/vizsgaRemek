@@ -1,0 +1,193 @@
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+  
+    background:
+      radial-gradient(circle at 20% 20%, #7fd8ff55, transparent 40%),
+      radial-gradient(circle at 80% 30%, #8affff55, transparent 40%),
+      linear-gradient(135deg, #5bb8ff, #1a7fd6);
+  
+    min-height: 100vh;
+  }
+
+  nav {
+    display: flex;
+    gap: 20px;
+    padding: 14px 25px;
+  
+    background: linear-gradient(
+      to bottom,
+      #dff5ff,
+      #8fd8ff
+    );
+  
+    border-bottom: 2px solid #5bb8ff;
+  
+    box-shadow:
+      inset 0 1px 0 #ffffff,
+      0 3px 10px rgba(0,0,0,0.2);
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #003b63;
+    font-weight: 600;
+  }
+  
+  nav a:hover {
+    color: #0078ff;
+  }
+
+  .book-card {
+
+    background: linear-gradient(
+      to bottom,
+      #ffffff,
+      #e7f7ff
+    );
+  
+    border-radius: 14px;
+  
+    border: 1px solid #a7e1ff;
+  
+    padding: 15px;
+  
+    width: 220px;
+  
+    box-shadow:
+      0 6px 18px rgba(0,0,0,0.2),
+      inset 0 1px 0 white;
+  
+    transition: 0.2s;
+  }
+  
+  .book-card:hover {
+  
+    transform: translateY(-5px);
+  
+    box-shadow:
+      0 12px 30px rgba(0,0,0,0.25),
+      inset 0 1px 0 white;
+  }
+
+  .book-list {
+
+    display: flex;
+  
+    flex-wrap: wrap;
+  
+    gap: 20px;
+  
+    padding: 20px;
+  
+  }
+
+  button {
+
+    padding: 8px 16px;
+  
+    border-radius: 10px;
+  
+    border: 1px solid #6bc6ff;
+  
+    background: linear-gradient(
+      to bottom,
+      #e8faff,
+      #7fd8ff
+    );
+  
+    font-weight: 600;
+  
+    cursor: pointer;
+  
+    box-shadow:
+      inset 0 1px 0 white,
+      0 3px 6px rgba(0,0,0,0.2);
+  
+    transition: 0.15s;
+  }
+  
+  button:hover {
+  
+    background: linear-gradient(
+      to bottom,
+      #ffffff,
+      #6bc6ff
+    );
+  
+    transform: translateY(-1px);
+  }
+  
+  button:active {
+  
+    transform: translateY(1px);
+  
+    box-shadow:
+      inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+
+  input {
+
+    padding: 8px 10px;
+  
+    border-radius: 8px;
+  
+    border: 1px solid #8cd8ff;
+  
+    outline: none;
+  
+    background: white;
+  
+  }
+  
+  input:focus {
+  
+    border-color: #3aa7ff;
+  
+    box-shadow: 0 0 6px #7fd8ff;
+  
+  }
+
+  
+  h1, h2, h3 {
+
+    color: #004c7d;
+  
+    text-shadow:
+      0 1px 0 white,
+      0 0 6px #7fd8ff;
+  
+  }
+
+  body::after {
+
+    content: "";
+  
+    position: fixed;
+  
+    inset: 0;
+  
+    background:
+      radial-gradient(circle at 30% 60%, #ffffff22 0 40px, transparent 45px),
+      radial-gradient(circle at 70% 30%, #ffffff22 0 30px, transparent 35px);
+  
+    pointer-events: none;
+  
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.25);
+  
+    backdrop-filter: blur(12px);
+  
+    border-radius: 16px;
+  
+    border: 1px solid rgba(255,255,255,0.4);
+  
+    box-shadow:
+      0 8px 25px rgba(0,0,0,0.2),
+      inset 0 1px 1px rgba(255,255,255,0.6);
+  
+    padding: 20px;
+  }
+  

@@ -1,25 +1,48 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "../api/axios";
+import api from "../api/axios";
 
 export default function BookDetails() {
+
   const { id } = useParams();
   const [book, setBook] = useState(null);
 
   useEffect(() => {
-    axios.get(`/books/${id}`)
+    api.get(`/books/${id}`)
       .then(res => setBook(res.data))
-      .catch(err => console.error(err));
+      .catch(err => console.log(err));
   }, [id]);
 
   if (!book) return <p>Loading...</p>;
 
   return (
-    <div className="book-details">
-      <img src={book.cover} alt={book.title} />
+    <div>
+
+      <img src={book.cover_url} />
+
       <h1>{book.title}</h1>
-      <h2>{book.author}</h2>
-      <p>{book.description}</p>
+
+      <p>{book.authors}</p>
+
+      <p>{book.genre}</p>
+
+      <p>{book.language}</p>
+
+      <p>{book.publish_year}</p>
+
     </div>
   );
 }
+
+const rentBook = async () => {
+
+  await api.post("/rent", {
+    book_id: book.book_id,
+    rental_days: 7
+  });
+
+  alert("Book rented!");
+};
+<button onClick={rentBook}>
+Rent Book
+</button>

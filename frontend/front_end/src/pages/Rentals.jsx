@@ -1,25 +1,49 @@
 import { useEffect, useState } from "react";
-import axios from "../api/axios";
+import api from "../api/axios";
+import { useAuth } from "../auth/authContext";
 
 export default function Rentals() {
+
+  const { user } = useAuth();
   const [rentals, setRentals] = useState([]);
 
   useEffect(() => {
-    axios.get("/rentals")
-      .then(res => setRentals(res.data))
-      .catch(err => console.error(err));
+
+    api.get(`/rentals/${user.user_id}`)
+      .then(res => setRentals(res.data));
+
   }, []);
+
+  const returnBook = async (id) => {
+
+    await api.delete(`/rentals/${id}`);
+
+    setRentals(rentals.filter(r => r.user_book_id !== id));
+
+  };
 
   return (
     <div>
-      <h1>Your Rentals</h1>
-      {rentals.length === 0 ? <p>No rentals yet.</p> : (
-        <ul>
-          {rentals.map(r => (
-            <li key={r.id}>{r.bookTitle} - {r.dueDate}</li>
-          ))}
-        </ul>
-      )}
+
+      <h1>My Rentals</h1>
+
+      {rentals.map(r => (
+
+        <div key={r.user_book_id}>
+
+          <h3>{r.title}</h3>
+
+          <p>End: {r.end_date}</p>
+
+          <button onClick={() => returnBook(r.user_book_id)}>
+            Return
+          </button>
+
+        </div>
+
+      ))}
+
     </div>
   );
+
 }

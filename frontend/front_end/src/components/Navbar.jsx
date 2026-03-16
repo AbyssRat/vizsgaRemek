@@ -2,23 +2,31 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../auth/authContext";
 
 export default function Navbar() {
-  const { user, logout } = useAuth();
+
+  const { token, logout } = useAuth();
 
   return (
-    <nav className="navbar">
+    <nav>
+
       <Link to="/">Books</Link>
-      {user ? (
+
+      {token && (
         <>
-          <Link to="/profile">Profile</Link>
-          <Link to="/rentals">Rentals</Link>
-          <button onClick={logout}>Logout</button>
+          <Link to="/rentals">My Rentals</Link>
+
+          <button onClick={logout}>
+            Logout
+          </button>
         </>
-      ) : (
+      )}
+
+      {!token && (
         <>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </>
       )}
+
     </nav>
   );
 }

@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from "react";
-import axios from "../api/axios";
-import BookCard from "../components/BookCard";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
+import BookList from "../components/BookList";
 
 export default function Books() {
-    const [books, setBooks] = useState([]);
 
-    useEffect(() => {
-        axios.get("/books")
-            .then(res => setBooks(res.data))
-            .catch(err => console.error(err));
-    }, []);
+  const [books, setBooks] = useState([]);
 
-    return (
-        <div className="books-grid">
-            {books.map(book => (
-                <BookCard key={book.id} book={book} />
-            ))}
-        </div>
-    );
+  useEffect(() => {
+    api.get("/books")
+      .then(res => setBooks(res.data))
+      .catch(err => console.log(err));
+  }, []);
+
+  return (
+    <div>
+      <h1>Books</h1>
+
+      <BookList books={books}/>
+    </div>
+  );
 }
