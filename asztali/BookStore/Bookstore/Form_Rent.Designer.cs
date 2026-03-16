@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Rent));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox_exit = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).BeginInit();
@@ -44,7 +45,7 @@
             // 
             // pictureBox_exit
             // 
-            this.pictureBox_exit.Image = global::Bookstore.Properties.Resources.ikon_exit;
+            this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
             this.pictureBox_exit.Location = new System.Drawing.Point(692, 374);
             this.pictureBox_exit.Name = "pictureBox_exit";
             this.pictureBox_exit.Size = new System.Drawing.Size(96, 64);

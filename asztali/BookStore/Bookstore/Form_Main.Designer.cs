@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
             this.pictureBox_user = new System.Windows.Forms.PictureBox();
             this.pictureBox_book = new System.Windows.Forms.PictureBox();
             this.pictureBox_rent = new System.Windows.Forms.PictureBox();
@@ -48,7 +49,7 @@
             // pictureBox_user
             // 
             this.pictureBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_user.Image = global::Bookstore.Properties.Resources.ikon_user;
+            this.pictureBox_user.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_user.Image")));
             this.pictureBox_user.Location = new System.Drawing.Point(18, 25);
             this.pictureBox_user.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_user.Name = "pictureBox_user";
@@ -61,7 +62,7 @@
             // pictureBox_book
             // 
             this.pictureBox_book.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_book.Image = global::Bookstore.Properties.Resources.ikon_book;
+            this.pictureBox_book.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_book.Image")));
             this.pictureBox_book.Location = new System.Drawing.Point(218, 25);
             this.pictureBox_book.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_book.Name = "pictureBox_book";
@@ -74,7 +75,7 @@
             // pictureBox_rent
             // 
             this.pictureBox_rent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_rent.Image = global::Bookstore.Properties.Resources.ikon_rent;
+            this.pictureBox_rent.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_rent.Image")));
             this.pictureBox_rent.Location = new System.Drawing.Point(18, 185);
             this.pictureBox_rent.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_rent.Name = "pictureBox_rent";
@@ -87,7 +88,7 @@
             // pictureBox_exit
             // 
             this.pictureBox_exit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_exit.Image = global::Bookstore.Properties.Resources.ikon_exit;
+            this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
             this.pictureBox_exit.Location = new System.Drawing.Point(218, 185);
             this.pictureBox_exit.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_exit.Name = "pictureBox_exit";
