@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_user)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_book)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rent)).BeginInit();
@@ -44,13 +46,15 @@
             this.fejlecpanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox_user
             // 
             this.pictureBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox_user.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_user.Image")));
-            this.pictureBox_user.Location = new System.Drawing.Point(18, 25);
+            this.pictureBox_user.Location = new System.Drawing.Point(18, 22);
             this.pictureBox_user.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_user.Name = "pictureBox_user";
             this.pictureBox_user.Size = new System.Drawing.Size(164, 110);
@@ -63,7 +67,7 @@
             // 
             this.pictureBox_book.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox_book.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_book.Image")));
-            this.pictureBox_book.Location = new System.Drawing.Point(218, 25);
+            this.pictureBox_book.Location = new System.Drawing.Point(218, 22);
             this.pictureBox_book.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_book.Name = "pictureBox_book";
             this.pictureBox_book.Size = new System.Drawing.Size(164, 110);
@@ -76,7 +80,7 @@
             // 
             this.pictureBox_rent.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox_rent.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_rent.Image")));
-            this.pictureBox_rent.Location = new System.Drawing.Point(18, 185);
+            this.pictureBox_rent.Location = new System.Drawing.Point(18, 176);
             this.pictureBox_rent.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_rent.Name = "pictureBox_rent";
             this.pictureBox_rent.Size = new System.Drawing.Size(164, 110);
@@ -89,10 +93,10 @@
             // 
             this.pictureBox_exit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
-            this.pictureBox_exit.Location = new System.Drawing.Point(218, 185);
+            this.pictureBox_exit.Location = new System.Drawing.Point(4, 4);
             this.pictureBox_exit.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox_exit.Name = "pictureBox_exit";
-            this.pictureBox_exit.Size = new System.Drawing.Size(164, 110);
+            this.pictureBox_exit.Size = new System.Drawing.Size(156, 102);
             this.pictureBox_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox_exit.TabIndex = 0;
             this.pictureBox_exit.TabStop = false;
@@ -121,6 +125,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 80);
@@ -135,16 +140,39 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.pictureBox_user, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_exit, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox_book, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox_rent, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(289, 76);
+            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(294, 6);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 320);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 309);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.pictureBox_exit, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(412, 321);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 110);
+            this.tableLayoutPanel2.TabIndex = 2;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(218, 176);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(164, 110);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // Form_Main
             // 
@@ -169,6 +197,8 @@
             this.fejlecpanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -183,6 +213,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

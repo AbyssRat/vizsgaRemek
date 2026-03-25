@@ -104,6 +104,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_Authors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Authors.Designer.cs">
+      <DependentUpon>Form_Authors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Book.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,12 +134,16 @@
     <Compile Include="Form_User.Designer.cs">
       <DependentUpon>Form_User.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Authors.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Rent.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\APIService.cs" />
+    <EmbeddedResource Include="Form_Authors.resx">
+      <DependentUpon>Form_Authors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Book.resx">
       <DependentUpon>Form_Book.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,18 +181,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ikon_exit.png" />
+    <None Include="Resources\ikon_exit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ikon_rent.png" />
+    <None Include="Resources\ikon_rent.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ikon_book.png" />
+    <None Include="Resources\ikon_book.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ikon_user.png" />
+    <None Include="Resources\ikon_user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\ikon_authors.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.2\build\net471\System.ValueTuple.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
