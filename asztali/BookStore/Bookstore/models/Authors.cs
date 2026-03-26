@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bookstore.Models
 {
-    internal class Authors
+    public class Authors
     {
+        public int Author_Id { get; set; }
+        public string Name { get; set; }
+        public string Bio { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

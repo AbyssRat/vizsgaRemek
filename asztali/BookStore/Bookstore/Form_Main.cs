@@ -50,5 +50,13 @@ namespace Bookstore
             }
             Application.Exit();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Form_Authors form_Authors = new Form_Authors();
+            this.Hide();
+            form_Authors.ShowDialog();
+            this.Show();
+        }
     }
 }
