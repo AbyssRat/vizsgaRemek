@@ -40,6 +40,7 @@
             this.txtAuthorID = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtBio = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -141,11 +142,21 @@
             this.txtBio.Size = new System.Drawing.Size(100, 20);
             this.txtBio.TabIndex = 10;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(406, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "AUTHORS";
+            // 
             // Form_Authors
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtBio);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtAuthorID);
@@ -181,5 +192,6 @@
         private System.Windows.Forms.TextBox txtAuthorID;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtBio;
+        private System.Windows.Forms.Label label4;
     }
 }
