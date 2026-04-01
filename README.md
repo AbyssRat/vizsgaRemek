@@ -1,222 +1,279 @@
-# 📚 Online E-Könyv Kölcsönzés
+# 📚 Online E-Könyv Kölcsönző Rendszer
 
-A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után lehetőséget kap a felhasználó jogosultságok vásárlására, amelyek lehetőséget adnak a könyvek tartalmának online megismerésére a vásárolt jogosultság által engedett ideig. A választást azzal szeretnénk segíteni, hogy minden könyvről rövid leírást adunk és az első oldalt mindenki számára elérhetővé teszünk Zöld? Lehetőséget adunk érdeklődésnek megfeléelő könyv keresésére
+A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után a felhasználók krediteket használva e-könyveket kölcsönözhetnek meghatározott időre, amely alatt online olvashatják a könyvek tartalmát.
 
-- ISBN szám
-- szerző
-- könyv cím
-- kiadás éve
-- nyelv
-  
-alapján.
+A felhasználók a választást azzal segítjük, hogy minden könyvről rövid leírás jelenik meg, valamint az első oldal minden látogató számára ingyenesen megtekinthető.
 
-A kiválasztott könyveket egy virtuális kosárba tudja helyezni, amelyet fizetés után adott ideig olvashat.
+A rendszer lehetőséget biztosít könyvek keresésére az alábbi adatok alapján:
 
----
+* ISBN szám
+* szerző
+* könyv címe
+* kiadás éve
+* nyelv
 
-## 🧍 Csapat
-
-- Ábel Vilmos - Frontend  
-- Molnár Dóra - Adatbázis, Backend  
-- Petrény-Barócsy Bálint - Backend, API  
+A kiválasztott könyvek egy virtuális kosárba helyezhetők, majd a felhasználó a kölcsönzési idő kiválasztása után kreditek felhasználásával bérelheti ki őket.
 
 ---
 
-## 🧩 Fő funkciók
+# 🧍 Csapat
 
-- 👤 Felhasználók regisztrációja, bejelentkezés OAuth2-vel  
-- 📖 E-könyvek nyilvántartása  
-- ✍ Szerzők kezelése  
-- 🔗 Könyv–szerző kapcsolat (many-to-many)
-- 💵A bérlés időtartalma pénz függvényében változtatható
-- ⏱️ Rugalmas kölcsönzési idő (akár 1 nap)
-- ⌛ Minden könyv első oldalát el lehet olvasni
-- 📜 Felhasználói e-könyv előfizetések kezelése (start_date / end_date)  
-- 🌐 E-könyvek böngészése és hozzáférés a webes felületen  
-- 🗂️ ER diagram és relációs adatbázis-struktúra  
+* **Ábel Vilmos** — Frontend
+* **Molnár Dóra** — Adatbázis, Backend, Frontend, Design
+* **Petrény-Barócsy Bálint** — Backend, API
 
 ---
 
-## 📐 Entitások
- 
-| Table Name     | Oszlopok / PK / FK                                             |
-|----------------|---------------------------------------------------------------|
-| **USERS**      | `PK user_id`, `username`, `email`, `password_hash`, `is_admin`, `created_at`, `google_id` |
-| **BOOKS**      | `PK book_id`, `title`, `genre`, `publish_year`, `ISBN`, `language`, `file_url`, `preview_url`, `cover_url` |
-| **AUTHORS**    | `PK author_id`, `name`, `bio`                                       |
-| **BOOK_AUTHORS** | `PK book_id`, `PK author_id`, `FK book_id` → BOOKS, `FK author_id` → AUTHORS |
-| **USER_BOOKS** | `PK user_book_id`, `FK user_id` → USERS, `FK book_id` → BOOKS, `start_date`, `rental_days`, `end_date` (computed) |
+# 🧩 Fő funkciók
 
-## 📡 API Végpontok
-
-### 🔐 Hitelesítés
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| POST | `/api/auth/register` | Nem | Új felhasználó regisztrálása |
-| POST | `/api/auth/login` | Nem | Felhasználó bejelentkezése, JWT token visszaadása |
-| GET | `/api/auth/me` | Igen | Jelenleg bejelentkezett felhasználó lekérése |
+* 👤 Felhasználók regisztrációja és bejelentkezése
+* 📖 E-könyvek nyilvántartása
+* ✍ Szerzők kezelése
+* 🔗 Könyv–szerző kapcsolat (many-to-many)
+* 💳 Kreditekkel történő könyvbérlés
+* ⏱️ Rugalmas kölcsönzési idő (akár 1 nap)
+* ⌛ Minden könyv első oldala ingyenesen megtekinthető
+* 📜 Felhasználói könyvbérlések kezelése
+* 🌐 E-könyvek böngészése és olvasása webes felületen
+* 🗂️ ER diagram és relációs adatbázis-struktúra
 
 ---
 
-### 👤 Felhasználók
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| GET | `/api/users` | Igen (Admin) | Összes felhasználó lekérése |
-| GET | `/api/users/:id` | Igen | Felhasználó lekérése ID alapján |
-| DELETE | `/api/users/:id` | Igen (Admin) | Felhasználó törlése |
+# 📐 Entitások
+
+| Table Name       | Oszlopok                                                                                                      |
+| ---------------- | ------------------------------------------------------------------------------------------------------------- |
+| **USERS**        | `user_id (PK)`, `username`, `email`, `password_hash`, `credits`, `is_admin`, `created_at`                     |
+| **AUTHORS**      | `author_id (PK)`, `name`, `bio`                                                                               |
+| **BOOKS**        | `book_id (PK)`, `title`, `genre`, `language`, `publish_year`, `ISBN`, `file_url`, `preview_url`, `cover_url`  |
+| **BOOK_AUTHORS** | `book_id (FK)`, `author_id (FK)`                                                                              |
+| **USER_BOOKS**   | `user_book_id (PK)`, `user_id (FK)`, `book_id (FK)`, `start_date`, `rental_days`, `end_date`, `credits_spent` |
 
 ---
 
-### 📚 Könyvek
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| GET | `/api/books` | Nem | Összes könyv lekérése |
-| GET | `/api/books/:id` | Nem | Könyv lekérése ID alapján |
-| POST | `/api/books` | Igen (Admin) | Új könyv hozzáadása |
-| PUT | `/api/books/:id` | Igen (Admin) | Könyv frissítése |
-| DELETE | `/api/books/:id` | Igen (Admin) | Könyv törlése |
+# 🗂️ Adatbázis struktúra
+
+A rendszer relációs adatbázist használ, amely az alábbi kapcsolatokat tartalmazza:
+
+```
+USERS ||--o{ USER_BOOKS : rents
+BOOKS ||--o{ USER_BOOKS : rented
+BOOKS ||--o{ BOOK_AUTHORS : has
+AUTHORS ||--o{ BOOK_AUTHORS : writes
+```
+
+### Táblák
+
+```
+USERS {
+    INT user_id PK
+    VARCHAR username
+    VARCHAR email
+    VARCHAR password_hash
+    INT credits
+    BOOLEAN is_admin
+    TIMESTAMP created_at
+}
+
+AUTHORS {
+    INT author_id PK
+    VARCHAR name
+    TEXT bio
+}
+
+BOOKS {
+    INT book_id PK
+    VARCHAR title
+    ENUM genre
+    ENUM language
+    YEAR publish_year
+    VARCHAR ISBN
+    VARCHAR file_url
+    VARCHAR preview_url
+    VARCHAR cover_url
+}
+
+BOOK_AUTHORS {
+    INT book_id FK
+    INT author_id FK
+}
+
+USER_BOOKS {
+    INT user_book_id PK
+    INT user_id FK
+    INT book_id FK
+    DATE start_date
+    INT rental_days
+    DATE end_date
+    INT credits_spent
+}
+```
 
 ---
 
-### 📄 Könyv oldalak / Előnézet
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| GET | `/api/books/:id/pages/1` | Nem | Első (ingyenes) oldal lekérése |
-| GET | `/api/books/:id/pages/:page` | Igen | Bérelhető könyv oldal lekérése |
+# 📡 API Végpontok
+
+## 🔐 Hitelesítés
+
+| Módszer | Végpont              | Hitelesítés | Leírás                              |
+| ------- | -------------------- | ----------- | ----------------------------------- |
+| POST    | `/api/auth/register` | Nem         | Új felhasználó regisztrálása        |
+| POST    | `/api/auth/login`    | Nem         | Felhasználó bejelentkezése          |
+| GET     | `/api/auth/me`       | Igen        | Bejelentkezett felhasználó lekérése |
 
 ---
 
-### 📦 Könyvbérlés
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| POST | `/api/rentals` | Igen | Könyv kölcsönzése X napra |
-| GET | `/api/rentals/my` | Igen | Jelenlegi felhasználó kölcsönzései |
-| GET | `/api/rentals` | Igen (Admin) | Összes kölcsönzés lekérése |
-| DELETE | `/api/rentals/:id` | Igen | Könyvkölcsönzés törlése |
+## 👤 Felhasználók
+
+| Módszer | Végpont          | Hitelesítés | Leírás              |
+| ------- | ---------------- | ----------- | ------------------- |
+| GET     | `/api/users`     | Admin       | Összes felhasználó  |
+| GET     | `/api/users/:id` | Igen        | Felhasználó adatai  |
+| DELETE  | `/api/users/:id` | Admin       | Felhasználó törlése |
 
 ---
 
-### 🧪 Segédfunkciók
-| Módszer | Végpont | Hitelesítés szükséges | Leírás |
-|------|---------|---------------------|--------|
-| GET | `/api/health` | Nem | Szerver állapot ellenőrzése |
+## 📚 Könyvek
+
+| Módszer | Végpont          | Hitelesítés | Leírás           |
+| ------- | ---------------- | ----------- | ---------------- |
+| GET     | `/api/books`     | Nem         | Összes könyv     |
+| GET     | `/api/books/:id` | Nem         | Könyv részletek  |
+| POST    | `/api/books`     | Admin       | Könyv hozzáadása |
+| PUT     | `/api/books/:id` | Admin       | Könyv módosítása |
+| DELETE  | `/api/books/:id` | Admin       | Könyv törlése    |
 
 ---
 
-### 🔑 Hitelesítési fejléc
-A védett végpontokhoz add hozzá ezt a fejlécet:
+## 📄 Könyv oldalak / előnézet
 
+| Módszer | Végpont                      | Hitelesítés | Leírás                   |
+| ------- | ---------------------------- | ----------- | ------------------------ |
+| GET     | `/api/books/:id/pages/1`     | Nem         | Ingyenes első oldal      |
+| GET     | `/api/books/:id/pages/:page` | Igen        | Könyv oldal megtekintése |
 
+---
+
+## 📦 Könyvbérlés
+
+| Módszer | Végpont            | Hitelesítés | Leírás             |
+| ------- | ------------------ | ----------- | ------------------ |
+| POST    | `/api/rentals`     | Igen        | Könyv kölcsönzése  |
+| GET     | `/api/rentals/my`  | Igen        | Saját kölcsönzések |
+| GET     | `/api/rentals`     | Admin       | Összes kölcsönzés  |
+| DELETE  | `/api/rentals/:id` | Igen        | Kölcsönzés törlése |
+
+---
+
+## 🧪 Segédfunkciók
+
+| Módszer | Végpont       | Hitelesítés | Leírás          |
+| ------- | ------------- | ----------- | --------------- |
+| GET     | `/api/health` | Nem         | Szerver állapot |
+
+---
+
+# 🔑 Hitelesítési fejléc
+
+A védett végpontokhoz JWT token szükséges.
+
+```
 Authorization: Bearer SAJÁT_JWT_TOKEN
+```
 
+---
 
-usecaseDiagram
-    actor "Vendég (Guest)" as Guest
-    actor "Felhasználó (User)" as User
-    actor "Adminisztrátor (Admin)" as Admin
- 
-    package "E-Könyv Rendszer" {
-        usecase "Regisztráció / Bejelentkezés" as UC1
-        usecase "Könyvek keresése (ISBN, Cím, Szerző)" as UC2
-        usecase "Előnézet (Első oldal) megtekintése" as UC3
-       
-        usecase "Könyv kosárba helyezése" as UC4
-        usecase "Kölcsönzési idő kiválasztása" as UC5
-        usecase "Fizetés és Kölcsönzés" as UC6
-        usecase "Teljes könyv olvasása" as UC7
-        usecase "Saját bérlések megtekintése" as UC8
- 
-        usecase "Új könyv felvétele" as UC9
-        usecase "Könyv szerkesztése / törlése" as UC10
-        usecase "Szerzők kezelése" as UC11
-        usecase "Felhasználók kezelése" as UC12
-    }
- 
-    %% Öröklődés: A User tudja mindazt, amit a Guest, az Admin mindazt, amit a User
-    Guest <|-- User
-    User <|-- Admin
- 
-    %% Kapcsolatok
-    Guest --> UC1
-    Guest --> UC2
-    Guest --> UC3
- 
-    User --> UC4
-    User --> UC5
-    User --> UC6
-    User --> UC7
-    User --> UC8
- 
-    Admin --> UC9
-    Admin --> UC10
-    Admin --> UC11
-    Admin --> UC12
- 
-
-## 🛠️ Felhasznált technológiák
+# 🛠️ Felhasznált technológiák
 
 ### 🗄️ Adatbázis
-- **MySQL**
-- Teljesen normalizált (3NF) adatmodell
-- ER diagrammal tervezve
-- Táblák: `users`, `authors`, `books`, `book_authors`, `user_books`
+
+* **MySQL**
+* 3NF normalizált adatmodell
+* ER diagram
 
 ### ⚙️ Backend
-- Node.js / Express (vagy bármilyen REST API)
-- OAuth2 hitelesítés
-- Üzleti logika: előfizetések, hozzáférések, admin műveletek
 
-### 🌐 Webes felület
-- **React**
-- Felhasználóbarát UI
-- E-könyvek böngészése, hozzáférés, előfizetések megtekintése
+* **Node.js**
+* **Express**
+* REST API
+* JWT alapú hitelesítés
 
----
+### 🌐 Frontend
 
-## 🗂️ Adatbázis felépítése
-
-A rendszer az alábbi fő táblákat használja:
-
-- **users** – felhasználók és adminok  
-- **authors** – szerzők  
-- **books** – e-könyvek adatai, letöltési / olvasási link  
-- **book_authors** – könyv–szerző kapcsolat (many-to-many)  
-- **user_books** – felhasználói e-könyv előfizetések, hozzáférés dátuma  
-
-📌 Admin jogosultságot a `users.is_admin` mező határozza meg.
+* **React**
+* Reszponzív webes felület
+* E-könyvek böngészése és olvasása
 
 ---
 
-## 🔐 Jogosultságok
+# 🔐 Jogosultságok
 
-### 👤 Felhasználó
-- E-könyvek megtekintése
-- Saját előfizetések kezelése
-- Új e-könyv előfizetések vásárlása
+## 👤 Felhasználó
 
-### 🛡️ Admin
-- E-könyvek hozzáadása / módosítása / törlése
-- Szerzők kezelése
-- Felhasználói előfizetések adminisztrációja
-- Teljes rendszer felügyelete
+* E-könyvek böngészése
+* Könyvek kosárba helyezése
+* Könyvek kölcsönzése kreditek felhasználásával
+* Saját kölcsönzések megtekintése
+* Könyvek olvasása a kölcsönzési idő alatt
 
 ---
 
-## 🚀 Projekt célja
+## 🛡️ Admin
 
-A projekt célja egy **teljesen online e-könyv platform megvalósítása**, amely bemutatja:
-
-- relációs adatbázis-tervezést 3NF-ben,
-- ER diagram használatát,
-- backend–frontend kommunikációt REST API-val,
-- OAuth2 alapú felhasználói hitelesítést,
-- digitális előfizetések és hozzáférések kezelését.
+* Könyvek hozzáadása / módosítása / törlése
+* Szerzők kezelése
+* Felhasználók kezelése
+* Kölcsönzések kezelése
 
 ---
 
-## 📄 Dokumentáció
+# 🚀 Telepítés és futtatás
 
-- ER diagram (Crow’s Foot jelöléssel)  
-- SQL adatbázis script és seed  
-- Frontend és backend forráskód  
-- REST API végpontok dokumentációja
+A projekt futtatásához szükséges lépések:
+
+### 1️⃣ Repository letöltése
+
+```
+git clone https://github.com/AbyssRat/vizsgaRemek.git
+```
+
+vagy a repository letöltése ZIP formátumban.
+
+---
+
+### 2️⃣ Projekt mappa megnyitása
+
+Navigálj a letöltött projekt mappájába.
+
+---
+
+### 3️⃣ Indítás
+
+A projekt indításához futtasd az alábbi fájlt:
+
+```
+indit.bat
+```
+
+Ez automatikusan elindítja:
+
+* a backend szervert
+* a frontend alkalmazást
+
+---
+
+### 4️⃣ Alkalmazás megnyitása
+
+A webes felület ezután elérhető lesz a böngészőben.
+
+---
+
+# 🎯 Projekt célja
+
+A projekt célja egy **online e-könyv platform megvalósítása**, amely bemutatja:
+
+* relációs adatbázis-tervezést (3NF)
+* ER diagram használatát
+* REST API alapú backend-frontend kommunikációt
+* felhasználói hitelesítést és jogosultságkezelést
+* digitális könyvkölcsönzés működését

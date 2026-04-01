@@ -1,45 +1,53 @@
+## ER Diagram
 
 ```mermaid
-flowchart LR
-    USERS["USERS
-    ─────────────
-    PK user_id
-    username
-    email
-    password_hash
-    is_admin
-    created_at"]
+erDiagram
 
-    BOOKS["BOOKS
-    ─────────────
-    PK book_id
-    title
-    genre
-    publish_year
-    ISBN
-    file_url
-    preview_url"]
+    USERS {
+        INT user_id PK
+        VARCHAR username
+        VARCHAR email
+        VARCHAR password_hash
+        INT credits
+        BOOLEAN is_admin
+        TIMESTAMP created_at
+    }
 
-    AUTHORS["AUTHORS
-    ─────────────
-    PK author_id
-    name"]
+    AUTHORS {
+        INT author_id PK
+        VARCHAR name
+        TEXT bio
+    }
 
-    BOOK_AUTHORS["BOOK_AUTHORS
-    ─────────────
-    PK/FK book_id
-    PK/FK author_id"]
+    BOOKS {
+        INT book_id PK
+        VARCHAR title
+        ENUM genre
+        ENUM language
+        YEAR publish_year
+        VARCHAR ISBN
+        VARCHAR file_url
+        VARCHAR preview_url
+        VARCHAR cover_url
+    }
 
-    USER_BOOKS["USER_BOOKS
-    ─────────────
-    PK user_book_id
-    FK user_id
-    FK book_id
-    start_date
-    rental_days
-    end_date (computed)"]
+    BOOK_AUTHORS {
+        INT book_id FK
+        INT author_id FK
+    }
 
-    USERS -->|rents| USER_BOOKS
-    BOOKS -->|is rented| USER_BOOKS
-    BOOKS -->|has| BOOK_AUTHORS
-    AUTHORS -->|writes| BOOK_AUTHORS
+    USER_BOOKS {
+        INT user_book_id PK
+        INT user_id FK
+        INT book_id FK
+        DATE start_date
+        INT rental_days
+        DATE end_date
+        INT credits_spent
+    }
+
+    USERS ||--o{ USER_BOOKS : rents
+    BOOKS ||--o{ USER_BOOKS : rented
+    BOOKS ||--o{ BOOK_AUTHORS : has
+    AUTHORS ||--o{ BOOK_AUTHORS : writes
+```

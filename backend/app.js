@@ -1,15 +1,11 @@
 import express from "express";
 import cors from "cors";
-import passport from "passport";
-import "./config/passport.js"; // ✅ import passport config early
 import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import rentalRoutes from "./routes/rentalRoutes.js";
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
 
 const app = express(); // ✅ app FIRST
-
-app.use(passport.initialize()); // ✅ now safe
 
 app.use(cors());
 app.use(express.json());
