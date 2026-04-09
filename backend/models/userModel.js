@@ -9,6 +9,7 @@ export const findUserByEmail = async (email) => {
 };
 
 export const createUser = async (username, email, passwordHash) => {
+    console.log("Creating user with:", { username, email, passwordHash });
     const [result] = await db.query(
         "INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)",
         [username, email, passwordHash]

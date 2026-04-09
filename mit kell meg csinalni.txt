@@ -1,5 +1,0 @@
-updatelni kene igy a readme-t 
-frontendet meg hegeszteni hogy legyen is rajta valami
-tutorialt irni de az csak annyi hogy nyomj ra h start.bat tehat igy vagod
-
-ennyi kb

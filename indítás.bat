@@ -60,7 +60,7 @@ timeout /t 3 /nobreak >nul
 :: =======================
 :: START FRONTEND IN BACKGROUND
 :: =======================
-start "" /b cmd /c "cd /d frontend\front_end && npm install && npm run dev > nul 2>&1"
+start "" /b cmd /c "cd /d frontend && npm install && npm run dev > nul 2>&1"
 
 :: =======================
 :: OPEN FRONTEND IN BROWSER
