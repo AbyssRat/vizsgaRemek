@@ -1,0 +1,1 @@
+curl -d "{\"email\":\"user@books.hu\",\"password\":\"1234\"}" -H "Content-Type: application/json" -X POST http://localhost:3000/api/auth/login
