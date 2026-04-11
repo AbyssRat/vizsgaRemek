@@ -1,53 +1,57 @@
-## ER Diagram
-
-```mermaid
 erDiagram
 
     USERS {
-        INT user_id PK
-        VARCHAR username
-        VARCHAR email
-        VARCHAR password_hash
-        INT credits
-        BOOLEAN is_admin
-        TIMESTAMP created_at
+        int user_id PK
+        string username
+        string email
+        string password_hash
+        int credits
+        string is_admin
+        datetime created_at
+        string first_name
+        string last_name
+        string city
+        string zip_code
+        string street_address
+        string card_number
+        date expiry_date
+        int cvv
     }
 
     AUTHORS {
-        INT author_id PK
-        VARCHAR name
-        TEXT bio
+        int author_id PK
+        string name
+        string bio
     }
 
     BOOKS {
-        INT book_id PK
-        VARCHAR title
-        ENUM genre
-        ENUM language
-        YEAR publish_year
-        VARCHAR ISBN
-        VARCHAR file_url
-        VARCHAR preview_url
-        VARCHAR cover_url
+        int book_id PK
+        string title
+        string genre
+        string language
+        int publish_year
+        string ISBN
+        string file_name
+        int rating
+        decimal price
+        string more_details_url
     }
 
     BOOK_AUTHORS {
-        INT book_id FK
-        INT author_id FK
+        int book_id FK
+        int author_id FK
     }
 
     USER_BOOKS {
-        INT user_book_id PK
-        INT user_id FK
-        INT book_id FK
-        DATE start_date
-        INT rental_days
-        DATE end_date
-        INT credits_spent
+        int user_book_id PK
+        int user_id FK
+        int book_id FK
+        date start_date
+        int rental_days
+        int credits_spent
     }
 
     USERS ||--o{ USER_BOOKS : rents
     BOOKS ||--o{ USER_BOOKS : rented
     BOOKS ||--o{ BOOK_AUTHORS : has
     AUTHORS ||--o{ BOOK_AUTHORS : writes
-```
