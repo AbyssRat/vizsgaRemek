@@ -141,43 +141,70 @@ Authorization: Bearer TOKEN
 
 ---
 
-# 🛠️ Telepítés és futtatás
+# 🛠️ Technológiák
 
-A projekt több komponensből áll: adatbázis, backend és frontend.
+## 🗄️ Adatbázis
+- MySQL / MariaDB  
+- Trigger  
+- View  
+- 3NF normalizált struktúra  
+
+## ⚙️ Backend
+- Node.js  
+- Express  
+- JWT auth  
+
+## 🌐 Frontend
+- React  
+
+## 💻 Desktop
+- WinForms (.NET 8)
 
 ---
 
-## 🗄️ 1. Adatbázis import
+# 🔐 Jogosultságok
 
-Első lépésként importálni kell az `adatbazis/book_rental_app.sql` állományt egy helyi MariaDB vagy MySQL szerverbe. Ez létrehozza a szükséges táblákat, kapcsolatokat, nézetet, triggert és a mintaadatokat.
+## 👤 User
+- könyvek böngészése  
+- kölcsönzés  
+- saját kölcsönzések megtekintése  
+- profil kezelés  
+
+## 🛡️ Admin
+- könyvek kezelése  
+- szerzők kezelése  
+- felhasználók kezelése  
+- kölcsönzések kezelése  
 
 ---
 
-## ⚙️ 2. Backend indítása
+# 🚀 Telepítés
 
-Második lépésként a `backend` mappában telepíteni kell a csomagokat, majd ellenőrizni a környezeti változókat és az adatbázis-kapcsolatot.
+## 1. Repo klónozás
 
-```bash
-cd backend
-npm install
-node server.js
-🌐 3. Frontend indítása
-Harmadik lépésként a frontend mappában is telepíteni kell a függőségeket, majd külön terminálban el kell indítani a fejlesztői szervert.
+git clone https://github.com/AbyssRat/vizsgaRemek.git
 
-A backend és frontend külön folyamatként működik, ezért indításkor ügyelni kell arra, hogy mindkét szolgáltatás fusson. A kliens ezután a böngészőből elérhető, tipikusan a Vite által biztosított helyi címen.
 
-cd frontend
-npm install
-npm run dev
-🎯 Projekt célja
+## 2. Adatbázis import
+
+Importáld:
+
+book_rental_app.sql
+
+
+## 3. Indítás
+
+indit.bat
+
+
+---
+
+# 🎯 Projekt célja
+
 A rendszer bemutatja:
 
-relációs adatbázis-tervezést
-
-trigger és view használatot
-
-REST API fejlesztést
-
-frontend-backend kapcsolatot
-
-desktop + web integrációt
+- relációs adatbázis-tervezést  
+- trigger és view használatot  
+- REST API fejlesztést  
+- frontend-backend kapcsolatot  
+- desktop + web integrációt  
