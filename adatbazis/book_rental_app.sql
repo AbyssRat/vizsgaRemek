@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Ápr 09. 14:46
+-- Létrehozás ideje: 2026. Ápr 11. 11:38
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -76,7 +76,8 @@ INSERT INTO `books` (`book_id`, `title`, `genre`, `language`, `publish_year`, `I
 (3, 'The Magic Walking Stick', 'Fantasy', 'English', 1894, '9781434402765', 'buchan-magic-walking-stick.epub', 3, 100.00, 'https://en.wikipedia.org/wiki/John_Buchan'),
 (4, 'The Skull', 'Science Fiction', 'English', 1952, '9780806537982', 'dick-skull.epub', 4, 100.00, 'https://en.wikipedia.org/wiki/The_Skull_(short_story)'),
 (5, 'Frankenstein', 'Horror', 'English', 1818, '9780486282114', 'shelley-frankenstein.epub', 5, 100.00, 'https://en.wikipedia.org/wiki/Frankenstein'),
-(6, 'The Great Gatsby', 'Romance', 'English', 1925, '9780743273565', 'fitzgerald-great-gatsby.epub', 5, 100.00, 'https://en.wikipedia.org/wiki/The_Great_Gatsby');
+(6, 'The Great Gatsby', 'Romance', 'English', 1925, '9780743273565', 'fitzgerald-great-gatsby.epub', 5, 100.00, 'https://en.wikipedia.org/wiki/The_Great_Gatsby'),
+(10, 'qqqqqqqqqqqqqq', 'Fantasy', 'English', 2026, '111111111111111111', 'sssssssssssssssssssssss', 1, 100.00, NULL);
 
 -- --------------------------------------------------------
 
@@ -99,7 +100,8 @@ INSERT INTO `book_authors` (`book_id`, `author_id`) VALUES
 (3, 3),
 (4, 4),
 (5, 5),
-(6, 6);
+(6, 6),
+(10, 2);
 
 -- --------------------------------------------------------
 
@@ -117,6 +119,7 @@ CREATE TABLE `rentals_view` (
 ,`finished_date` date
 ,`status` varchar(8)
 ,`title` varchar(255)
+,`author_name` varchar(100)
 ,`genre` enum('Fantasy','Science Fiction','Romance','Thriller','Non-Fiction','Mystery','Horror','Other')
 ,`language` enum('Hungarian','English','Spanish','French','German','Chinese','Japanese','Other')
 ,`publish_year` int(4)
@@ -157,7 +160,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `username`, `email`, `password_hash`, `credits`, `is_admin`, `created_at`, `first_name`, `last_name`, `city`, `zip_code`, `street_address`, `card_number`, `expiry_date`, `cvv`) VALUES
 (1, 'mintamenyhert', 'user@books.hu', '$2b$10$X3YkdfWuk.UoYyYiguyUVOB5BX1ADPFLWzDqykb4s377KbHbfeSry', 10, 'false', '2026-04-04 06:52:12', 'Minta', 'Menyhért', 'Hajdúböszörmény', '4220', 'Győrössy kert', '4802 3709 1026 6526', '2028-05-01', 553),
 (3, 'Nagy Mihály', 'user3@books.hu', '$2b$10$ZJ2T3fvTZc3YBuhy4L8iFORJT9fsIJ4TwM84DsQABuAXjZwNUP8Ha', 10, 'false', '2026-04-04 09:28:24', 'Nagy', 'Mihály', 'Debrecen', '4023', 'Nyár utca', '4205 4031 1995 4916', '2028-04-06', 871),
-(4, 'Kis Tibor', 'user4@books.hu', '$2b$10$W9XBfhiQrY4FruItqhkFZu4OkyCUcUX4XCiv1Z4vyWcMEkayk0DVq', 10, 'false', '2026-04-04 09:38:14', 'Kis', 'Tibor', 'Eger', '3300', 'Dobó tér', '4298 5769 3437 9860', '2028-05-16', 156);
+(4, 'Kis Tibor', 'user4@books.hu', '$2b$10$W9XBfhiQrY4FruItqhkFZu4OkyCUcUX4XCiv1Z4vyWcMEkayk0DVq', 10, 'false', '2026-04-04 09:38:14', 'Kis', 'Tibor', 'Eger', '3300', 'Dobó tér', '4298 5769 3437 9860', '2028-05-16', 156),
+(5, 'Boros Sándor', 'user6@books.hu', '$2b$10$bUxEuCk3wZibamQewD0PMu9F/B7uthqzh0EzlgVbH04p9djpSZFay', 10, 'false', '2026-04-09 18:16:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -207,7 +211,7 @@ DELIMITER ;
 --
 DROP TABLE IF EXISTS `rentals_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rentals_view`  AS SELECT `ub`.`user_book_id` AS `user_book_id`, `ub`.`user_id` AS `user_id`, `ub`.`book_id` AS `book_id`, `ub`.`start_date` AS `start_date`, `ub`.`rental_days` AS `rental_days`, `ub`.`credits_spent` AS `credits_spent`, `ub`.`start_date`+ interval `ub`.`rental_days` day AS `finished_date`, CASE WHEN `ub`.`start_date` + interval `ub`.`rental_days` day <= curdate() THEN 'finished' ELSE 'active' END AS `status`, `b`.`title` AS `title`, `b`.`genre` AS `genre`, `b`.`language` AS `language`, `b`.`publish_year` AS `publish_year`, `b`.`ISBN` AS `ISBN`, `b`.`file_name` AS `file_name`, `b`.`rating` AS `rating`, `b`.`price` AS `price` FROM (`user_books` `ub` join `books` `b` on(`b`.`book_id` = `ub`.`book_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rentals_view`  AS SELECT `ub`.`user_book_id` AS `user_book_id`, `ub`.`user_id` AS `user_id`, `ub`.`book_id` AS `book_id`, `ub`.`start_date` AS `start_date`, `ub`.`rental_days` AS `rental_days`, `ub`.`credits_spent` AS `credits_spent`, `ub`.`start_date`+ interval `ub`.`rental_days` day AS `finished_date`, CASE WHEN `ub`.`start_date` + interval `ub`.`rental_days` day <= curdate() THEN 'finished' ELSE 'active' END AS `status`, `b`.`title` AS `title`, `authors`.`name` AS `author_name`, `b`.`genre` AS `genre`, `b`.`language` AS `language`, `b`.`publish_year` AS `publish_year`, `b`.`ISBN` AS `ISBN`, `b`.`file_name` AS `file_name`, `b`.`rating` AS `rating`, `b`.`price` AS `price` FROM (((`user_books` `ub` join `books` `b` on(`b`.`book_id` = `ub`.`book_id`)) join `book_authors` on(`b`.`book_id` = `book_authors`.`book_id`)) join `authors` on(`book_authors`.`author_id` = `authors`.`author_id`)) ;
 
 --
 -- Indexek a kiírt táblákhoz
@@ -263,13 +267,13 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT a táblához `books`
 --
 ALTER TABLE `books`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `user_books`
