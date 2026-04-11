@@ -67,6 +67,7 @@
             listBox_Konyvek.Name = "listBox_Konyvek";
             listBox_Konyvek.Size = new Size(250, 450);
             listBox_Konyvek.TabIndex = 0;
+            listBox_Konyvek.SelectedIndexChanged += listBox_Konyvek_SelectedIndexChanged;
             // 
             // panel_vezerlok
             // 
@@ -144,10 +145,13 @@
             // numericUpDown_price
             // 
             numericUpDown_price.Location = new Point(146, 316);
+            numericUpDown_price.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numericUpDown_price.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown_price.Name = "numericUpDown_price";
             numericUpDown_price.Size = new Size(150, 27);
             numericUpDown_price.TabIndex = 3;
             numericUpDown_price.TextAlign = HorizontalAlignment.Right;
+            numericUpDown_price.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // numericUpDown_publish_year
             // 

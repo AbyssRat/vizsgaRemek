@@ -120,11 +120,11 @@ namespace BookStore.Repository
             _db.ExecuteTransaction((conn, trans) =>
             {
                 // 1. Először töröljük a kapcsolatot a book_authors táblából
-                string deleteLinkSql = "DELETE FROM book_authors WHERE book_id = @id";
+                string deleteLinkSql = "DELETE FROM book_authors WHERE book_id = @bookId and author_id = (SELECT author_id FROM `authors` WHERE `name` LIKE @authorName)";
                 using (var cmd = new MySqlCommand(deleteLinkSql, conn, trans))
                 {
-                    cmd.Parameters.AddWithValue("@id", book.BookId);
-                    cmd.Parameters.AddWithValue("@id", book.BookId);
+                    cmd.Parameters.AddWithValue("@bookId", book.BookId);
+                    cmd.Parameters.AddWithValue("@authorName", book.AuthorName);
                     cmd.ExecuteNonQuery();
                 }
 
