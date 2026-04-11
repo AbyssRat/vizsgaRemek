@@ -184,13 +184,13 @@ Authorization: Bearer TOKEN
 
 `git clone https://github.com/AbyssRat/vizsgaRemek.git`
 
-2. Adatbázis import
+## 2. Adatbázis import
 Importáld a következő SQL fájlt egy helyi MariaDB vagy MySQL szerverbe:
 `book_rental_app.sql`
 
 Ez létrehozza a szükséges táblákat, kapcsolatokat, nézetet, triggert és a mintaadatokat.
 
-4. Indítás (AJÁNLOTT MÓDSZER)
+## 3. Indítás (AJÁNLOTT MÓDSZER)
 A projekt indításához alapból egy automatikus batch fájl áll rendelkezésre:
 
 `indit.bat`
@@ -201,31 +201,34 @@ a backend szervert
 
 a frontend fejlesztői szervert
 
-⚠️ Alternatív indítás (ha az indit.bat nem működik)
+## ⚠️ Alternatív indítás (ha az indit.bat nem működik)
 Ha a .bat fájl valamilyen okból nem futna, a rendszert manuálisan is el lehet indítani az alábbi módon.
 
-⚙️ Backend indítása
-`cd backend
-npm install
-node server.js`
-🌐 Frontend indítása (külön terminálban)
-`cd frontend
-npm install
-npm run dev`
-📌 Megjegyzés
+### ⚙️ Backend indítása
+`cd backend`
+`npm install`
+`node server.js`
+
+### 🌐 Frontend indítása (külön terminálban)
+`cd frontend`
+`npm install`
+`npm run dev`
+
+## 📌 Megjegyzés
 A backend és frontend két külön folyamatként fut, ezért indításkor fontos, hogy mindkettő el legyen indítva.
 
 A frontend alkalmazás a böngészőből érhető el, tipikusan a Vite által biztosított helyi címen (pl. http://localhost:5173).
 
-🧠 Teljes manuális indítás összefoglalva
-`git clone https://github.com/AbyssRat/vizsgaRemek.git
-cd backend
-npm install
-node server.js`
+## 🧠 Teljes manuális indítás összefoglalva
 
-`cd frontend
-npm install
-npm run dev`
+`git clone https://github.com/AbyssRat/vizsgaRemek.git`
+`cd backend`
+`npm install`
+`node server.js`
+
+`cd frontend`
+`npm install`
+`npm run dev`
 
 
 
