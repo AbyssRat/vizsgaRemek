@@ -25,6 +25,7 @@ app.get("/api/covers/:isbn", (req, res) => {
 
   try {
     if (fs.existsSync(filePath)) {
+      res.setHeader("Content-Type", "image/jpeg");
       return res.sendFile(filePath);
     }
     return res.sendFile(defaultPath);
