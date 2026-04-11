@@ -1,14 +1,14 @@
-﻿namespace Bookstore
+﻿namespace BookStore
 {
     partial class Form_Main
     {
         /// <summary>
-        /// Required designer variable.
+        ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///  Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
@@ -23,199 +23,179 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///  Required method for Designer support - do not modify
+        ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Main));
-            this.pictureBox_user = new System.Windows.Forms.PictureBox();
-            this.pictureBox_book = new System.Windows.Forms.PictureBox();
-            this.pictureBox_rent = new System.Windows.Forms.PictureBox();
-            this.pictureBox_exit = new System.Windows.Forms.PictureBox();
-            this.fejlecpanel = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_user)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_book)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).BeginInit();
-            this.fejlecpanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
-            // 
-            // pictureBox_user
-            // 
-            this.pictureBox_user.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_user.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_user.Image")));
-            this.pictureBox_user.Location = new System.Drawing.Point(18, 22);
-            this.pictureBox_user.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_user.Name = "pictureBox_user";
-            this.pictureBox_user.Size = new System.Drawing.Size(164, 110);
-            this.pictureBox_user.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_user.TabIndex = 0;
-            this.pictureBox_user.TabStop = false;
-            this.pictureBox_user.Click += new System.EventHandler(this.pictureBox_user_Click);
-            // 
-            // pictureBox_book
-            // 
-            this.pictureBox_book.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_book.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_book.Image")));
-            this.pictureBox_book.Location = new System.Drawing.Point(218, 22);
-            this.pictureBox_book.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_book.Name = "pictureBox_book";
-            this.pictureBox_book.Size = new System.Drawing.Size(164, 110);
-            this.pictureBox_book.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_book.TabIndex = 0;
-            this.pictureBox_book.TabStop = false;
-            this.pictureBox_book.Click += new System.EventHandler(this.pictureBox_book_Click);
-            // 
-            // pictureBox_rent
-            // 
-            this.pictureBox_rent.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_rent.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_rent.Image")));
-            this.pictureBox_rent.Location = new System.Drawing.Point(18, 176);
-            this.pictureBox_rent.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_rent.Name = "pictureBox_rent";
-            this.pictureBox_rent.Size = new System.Drawing.Size(164, 110);
-            this.pictureBox_rent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_rent.TabIndex = 0;
-            this.pictureBox_rent.TabStop = false;
-            this.pictureBox_rent.Click += new System.EventHandler(this.pictureBox_rent_Click);
-            // 
-            // pictureBox_exit
-            // 
-            this.pictureBox_exit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
-            this.pictureBox_exit.Location = new System.Drawing.Point(4, 4);
-            this.pictureBox_exit.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_exit.Name = "pictureBox_exit";
-            this.pictureBox_exit.Size = new System.Drawing.Size(156, 102);
-            this.pictureBox_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_exit.TabIndex = 0;
-            this.pictureBox_exit.TabStop = false;
-            this.pictureBox_exit.Click += new System.EventHandler(this.pictureBox_exit_Click);
-            // 
-            // fejlecpanel
-            // 
-            this.fejlecpanel.BackColor = System.Drawing.Color.DarkGray;
-            this.fejlecpanel.Controls.Add(this.label1);
-            this.fejlecpanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.fejlecpanel.Location = new System.Drawing.Point(0, 0);
-            this.fejlecpanel.Name = "fejlecpanel";
-            this.fejlecpanel.Size = new System.Drawing.Size(933, 80);
-            this.fejlecpanel.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(405, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 40);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "BOOKSTORE";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.tableLayoutPanel2);
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 80);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(933, 508);
-            this.panel1.TabIndex = 2;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.pictureBox_exit, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(412, 321);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(164, 110);
-            this.tableLayoutPanel2.TabIndex = 2;
+            tableLayoutPanel1 = new TableLayoutPanel();
+            button_Szerzok = new Button();
+            button_Konyvek = new Button();
+            button_Users = new Button();
+            button_Rent = new Button();
+            panel_fejlec = new Panel();
+            label_cim = new Label();
+            panel1 = new Panel();
+            button_exit = new Button();
+            tableLayoutPanel1.SuspendLayout();
+            panel_fejlec.SuspendLayout();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_user, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_book, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox_rent, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(294, 6);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(400, 309);
-            this.tableLayoutPanel1.TabIndex = 1;
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(button_Szerzok, 1, 1);
+            tableLayoutPanel1.Controls.Add(button_Konyvek, 0, 1);
+            tableLayoutPanel1.Controls.Add(button_Users, 1, 0);
+            tableLayoutPanel1.Controls.Add(button_Rent, 0, 0);
+            tableLayoutPanel1.Location = new Point(183, 101);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new Size(422, 254);
+            tableLayoutPanel1.TabIndex = 0;
             // 
-            // pictureBox1
+            // button_Szerzok
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(218, 176);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(164, 110);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            button_Szerzok.BackgroundImage = Properties.Resources.ikon_authors;
+            button_Szerzok.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Szerzok.Dock = DockStyle.Fill;
+            button_Szerzok.ImageAlign = ContentAlignment.TopCenter;
+            button_Szerzok.Location = new Point(214, 130);
+            button_Szerzok.Name = "button_Szerzok";
+            button_Szerzok.Size = new Size(205, 121);
+            button_Szerzok.TabIndex = 3;
+            button_Szerzok.Text = "Írók";
+            button_Szerzok.TextAlign = ContentAlignment.BottomCenter;
+            button_Szerzok.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button_Szerzok.UseVisualStyleBackColor = true;
+            button_Szerzok.Click += button_Szerzok_Click;
+            // 
+            // button_Konyvek
+            // 
+            button_Konyvek.BackgroundImage = Properties.Resources.ikon_book;
+            button_Konyvek.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Konyvek.Dock = DockStyle.Fill;
+            button_Konyvek.ImageAlign = ContentAlignment.TopCenter;
+            button_Konyvek.Location = new Point(3, 130);
+            button_Konyvek.Name = "button_Konyvek";
+            button_Konyvek.Size = new Size(205, 121);
+            button_Konyvek.TabIndex = 2;
+            button_Konyvek.Text = "Könyvek";
+            button_Konyvek.TextAlign = ContentAlignment.BottomCenter;
+            button_Konyvek.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button_Konyvek.UseVisualStyleBackColor = true;
+            button_Konyvek.Click += button_Konyvek_Click;
+            // 
+            // button_Users
+            // 
+            button_Users.BackgroundImage = Properties.Resources.ikon_user;
+            button_Users.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Users.Dock = DockStyle.Fill;
+            button_Users.ImageAlign = ContentAlignment.TopCenter;
+            button_Users.Location = new Point(214, 3);
+            button_Users.Name = "button_Users";
+            button_Users.Size = new Size(205, 121);
+            button_Users.TabIndex = 1;
+            button_Users.Text = "Felhasználók";
+            button_Users.TextAlign = ContentAlignment.BottomCenter;
+            button_Users.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button_Users.UseVisualStyleBackColor = true;
+            button_Users.Click += button_Users_Click;
+            // 
+            // button_Rent
+            // 
+            button_Rent.BackgroundImage = Properties.Resources.ikon_rent;
+            button_Rent.BackgroundImageLayout = ImageLayout.Stretch;
+            button_Rent.Dock = DockStyle.Fill;
+            button_Rent.ImageAlign = ContentAlignment.TopCenter;
+            button_Rent.Location = new Point(3, 3);
+            button_Rent.Name = "button_Rent";
+            button_Rent.Size = new Size(205, 121);
+            button_Rent.TabIndex = 0;
+            button_Rent.Text = "Kölcsönzés";
+            button_Rent.TextAlign = ContentAlignment.BottomCenter;
+            button_Rent.TextImageRelation = TextImageRelation.TextBeforeImage;
+            button_Rent.UseVisualStyleBackColor = true;
+            button_Rent.Click += button_Rent_Click;
+            // 
+            // panel_fejlec
+            // 
+            panel_fejlec.BackColor = SystemColors.ControlDarkDark;
+            panel_fejlec.Controls.Add(label_cim);
+            panel_fejlec.Dock = DockStyle.Top;
+            panel_fejlec.Location = new Point(0, 0);
+            panel_fejlec.Name = "panel_fejlec";
+            panel_fejlec.Size = new Size(800, 83);
+            panel_fejlec.TabIndex = 1;
+            // 
+            // label_cim
+            // 
+            label_cim.Dock = DockStyle.Fill;
+            label_cim.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_cim.ForeColor = SystemColors.ButtonHighlight;
+            label_cim.Location = new Point(0, 0);
+            label_cim.Name = "label_cim";
+            label_cim.Size = new Size(800, 83);
+            label_cim.TabIndex = 0;
+            label_cim.Text = "Book Store";
+            label_cim.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(button_exit);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 397);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 75);
+            panel1.TabIndex = 2;
+            // 
+            // button_exit
+            // 
+            button_exit.BackgroundImage = Properties.Resources.ikon_exit;
+            button_exit.BackgroundImageLayout = ImageLayout.Zoom;
+            button_exit.Dock = DockStyle.Right;
+            button_exit.Location = new Point(702, 0);
+            button_exit.Name = "button_exit";
+            button_exit.Size = new Size(98, 75);
+            button_exit.TabIndex = 0;
+            button_exit.UseVisualStyleBackColor = true;
+            button_exit.Click += button_exit_Click;
             // 
             // Form_Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(933, 588);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.fejlecpanel);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
-            this.Name = "Form_Main";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_user)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_book)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_rent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).EndInit();
-            this.fejlecpanel.ResumeLayout(false);
-            this.fejlecpanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 472);
+            Controls.Add(panel1);
+            Controls.Add(panel_fejlec);
+            Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Form_Main";
+            Text = "Könyvkölcsönzés";
+            tableLayoutPanel1.ResumeLayout(false);
+            panel_fejlec.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox_user;
-        private System.Windows.Forms.PictureBox pictureBox_book;
-        private System.Windows.Forms.PictureBox pictureBox_rent;
-        private System.Windows.Forms.PictureBox pictureBox_exit;
-        private System.Windows.Forms.Panel fejlecpanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button button_Rent;
+        private Button button_Users;
+        private Panel panel_fejlec;
+        private Label label_cim;
+        private Button button_Konyvek;
+        private Panel panel1;
+        private Button button_exit;
+        private Button button_Szerzok;
     }
 }
-

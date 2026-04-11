@@ -1,4 +1,4 @@
-﻿namespace Bookstore
+﻿namespace BookStore
 {
     partial class Form_Book
     {
@@ -28,279 +28,306 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Book));
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox_exit = new System.Windows.Forms.PictureBox();
-            this.listBoxBooks = new System.Windows.Forms.ListBox();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.txtGenre = new System.Windows.Forms.TextBox();
-            this.txtLanguage = new System.Windows.Forms.TextBox();
-            this.txtYear = new System.Windows.Forms.TextBox();
-            this.txtISBN = new System.Windows.Forms.TextBox();
-            this.txtFileUrl = new System.Windows.Forms.TextBox();
-            this.txtPreviewUrl = new System.Windows.Forms.TextBox();
-            this.txtCoverUrl = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).BeginInit();
-            this.SuspendLayout();
+            listBox_Konyvek = new ListBox();
+            panel_vezerlok = new Panel();
+            button_delete = new Button();
+            button_Update = new Button();
+            button_insert = new Button();
+            groupBox_KivalasztottKonyv = new GroupBox();
+            numericUpDown_price = new NumericUpDown();
+            numericUpDown_publish_year = new NumericUpDown();
+            comboBox_Author = new ComboBox();
+            comboBox_Language = new ComboBox();
+            comboBox_Genre = new ComboBox();
+            textBox_file_name = new TextBox();
+            textBox_ISBN = new TextBox();
+            textBox_Title = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label8 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label7 = new Label();
+            label1 = new Label();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            panel_vezerlok.SuspendLayout();
+            groupBox_KivalasztottKonyv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_price).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_publish_year).BeginInit();
+            SuspendLayout();
             // 
-            // label1
+            // listBox_Konyvek
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(383, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Book";
+            listBox_Konyvek.Dock = DockStyle.Left;
+            listBox_Konyvek.FormattingEnabled = true;
+            listBox_Konyvek.Location = new Point(0, 0);
+            listBox_Konyvek.Name = "listBox_Konyvek";
+            listBox_Konyvek.Size = new Size(250, 450);
+            listBox_Konyvek.TabIndex = 0;
+            listBox_Konyvek.SelectedIndexChanged += listBox_Konyvek_SelectedIndexChanged;
             // 
-            // pictureBox_exit
+            // panel_vezerlok
             // 
-            this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
-            this.pictureBox_exit.Location = new System.Drawing.Point(692, 374);
-            this.pictureBox_exit.Name = "pictureBox_exit";
-            this.pictureBox_exit.Size = new System.Drawing.Size(96, 64);
-            this.pictureBox_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_exit.TabIndex = 1;
-            this.pictureBox_exit.TabStop = false;
-            this.pictureBox_exit.Click += new System.EventHandler(this.pictureBox_exit_Click);
+            panel_vezerlok.Controls.Add(button_delete);
+            panel_vezerlok.Controls.Add(button_Update);
+            panel_vezerlok.Controls.Add(button_insert);
+            panel_vezerlok.Dock = DockStyle.Bottom;
+            panel_vezerlok.Location = new Point(250, 377);
+            panel_vezerlok.Name = "panel_vezerlok";
+            panel_vezerlok.Size = new Size(550, 73);
+            panel_vezerlok.TabIndex = 1;
             // 
-            // listBoxBooks
+            // button_delete
             // 
-            this.listBoxBooks.FormattingEnabled = true;
-            this.listBoxBooks.Location = new System.Drawing.Point(32, 48);
-            this.listBoxBooks.Name = "listBoxBooks";
-            this.listBoxBooks.Size = new System.Drawing.Size(240, 251);
-            this.listBoxBooks.TabIndex = 2;
-            this.listBoxBooks.SelectedIndexChanged += new System.EventHandler(this.listBoxBooks_SelectedIndexChanged);
+            button_delete.Image = Properties.Resources.Image_Torles;
+            button_delete.Location = new Point(386, 16);
+            button_delete.Name = "button_delete";
+            button_delete.Size = new Size(135, 45);
+            button_delete.TabIndex = 0;
+            button_delete.Text = "Törlés";
+            button_delete.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_delete.UseVisualStyleBackColor = true;
+            button_delete.Click += button_delete_Click;
             // 
-            // txtTitle
+            // button_Update
             // 
-            this.txtTitle.Location = new System.Drawing.Point(506, 44);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(100, 20);
-            this.txtTitle.TabIndex = 3;
+            button_Update.Image = Properties.Resources.Image_Modositas;
+            button_Update.Location = new Point(213, 16);
+            button_Update.Name = "button_Update";
+            button_Update.Size = new Size(135, 45);
+            button_Update.TabIndex = 0;
+            button_Update.Text = "Módosítás";
+            button_Update.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_Update.UseVisualStyleBackColor = true;
+            button_Update.Click += button_Update_Click;
             // 
-            // txtGenre
+            // button_insert
             // 
-            this.txtGenre.Location = new System.Drawing.Point(506, 81);
-            this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(100, 20);
-            this.txtGenre.TabIndex = 3;
+            button_insert.Image = Properties.Resources.Image_Uj;
+            button_insert.Location = new Point(40, 16);
+            button_insert.Name = "button_insert";
+            button_insert.Size = new Size(135, 45);
+            button_insert.TabIndex = 0;
+            button_insert.Text = "Mentés";
+            button_insert.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_insert.UseVisualStyleBackColor = true;
+            button_insert.Click += button_insert_Click;
             // 
-            // txtLanguage
+            // groupBox_KivalasztottKonyv
             // 
-            this.txtLanguage.Location = new System.Drawing.Point(506, 124);
-            this.txtLanguage.Name = "txtLanguage";
-            this.txtLanguage.Size = new System.Drawing.Size(100, 20);
-            this.txtLanguage.TabIndex = 3;
+            groupBox_KivalasztottKonyv.Controls.Add(numericUpDown_price);
+            groupBox_KivalasztottKonyv.Controls.Add(numericUpDown_publish_year);
+            groupBox_KivalasztottKonyv.Controls.Add(comboBox_Author);
+            groupBox_KivalasztottKonyv.Controls.Add(comboBox_Language);
+            groupBox_KivalasztottKonyv.Controls.Add(comboBox_Genre);
+            groupBox_KivalasztottKonyv.Controls.Add(textBox_file_name);
+            groupBox_KivalasztottKonyv.Controls.Add(textBox_ISBN);
+            groupBox_KivalasztottKonyv.Controls.Add(textBox_Title);
+            groupBox_KivalasztottKonyv.Controls.Add(label6);
+            groupBox_KivalasztottKonyv.Controls.Add(label5);
+            groupBox_KivalasztottKonyv.Controls.Add(label4);
+            groupBox_KivalasztottKonyv.Controls.Add(label8);
+            groupBox_KivalasztottKonyv.Controls.Add(label3);
+            groupBox_KivalasztottKonyv.Controls.Add(label2);
+            groupBox_KivalasztottKonyv.Controls.Add(label7);
+            groupBox_KivalasztottKonyv.Controls.Add(label1);
+            groupBox_KivalasztottKonyv.Dock = DockStyle.Fill;
+            groupBox_KivalasztottKonyv.Location = new Point(250, 0);
+            groupBox_KivalasztottKonyv.Name = "groupBox_KivalasztottKonyv";
+            groupBox_KivalasztottKonyv.Size = new Size(550, 377);
+            groupBox_KivalasztottKonyv.TabIndex = 0;
+            groupBox_KivalasztottKonyv.TabStop = false;
+            groupBox_KivalasztottKonyv.Text = "Kiválasztott könyv adatai";
             // 
-            // txtYear
+            // numericUpDown_price
             // 
-            this.txtYear.Location = new System.Drawing.Point(506, 165);
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(100, 20);
-            this.txtYear.TabIndex = 3;
+            numericUpDown_price.Location = new Point(146, 316);
+            numericUpDown_price.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numericUpDown_price.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            numericUpDown_price.Name = "numericUpDown_price";
+            numericUpDown_price.Size = new Size(150, 27);
+            numericUpDown_price.TabIndex = 3;
+            numericUpDown_price.TextAlign = HorizontalAlignment.Right;
+            numericUpDown_price.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
-            // txtISBN
+            // numericUpDown_publish_year
             // 
-            this.txtISBN.Location = new System.Drawing.Point(506, 202);
-            this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(100, 20);
-            this.txtISBN.TabIndex = 3;
+            numericUpDown_publish_year.Location = new Point(146, 199);
+            numericUpDown_publish_year.Name = "numericUpDown_publish_year";
+            numericUpDown_publish_year.Size = new Size(150, 27);
+            numericUpDown_publish_year.TabIndex = 3;
+            numericUpDown_publish_year.TextAlign = HorizontalAlignment.Right;
             // 
-            // txtFileUrl
+            // comboBox_Author
             // 
-            this.txtFileUrl.Location = new System.Drawing.Point(506, 245);
-            this.txtFileUrl.Name = "txtFileUrl";
-            this.txtFileUrl.Size = new System.Drawing.Size(100, 20);
-            this.txtFileUrl.TabIndex = 3;
+            comboBox_Author.FormattingEnabled = true;
+            comboBox_Author.Location = new Point(146, 81);
+            comboBox_Author.Name = "comboBox_Author";
+            comboBox_Author.Size = new Size(376, 28);
+            comboBox_Author.TabIndex = 2;
             // 
-            // txtPreviewUrl
+            // comboBox_Language
             // 
-            this.txtPreviewUrl.Location = new System.Drawing.Point(506, 286);
-            this.txtPreviewUrl.Name = "txtPreviewUrl";
-            this.txtPreviewUrl.Size = new System.Drawing.Size(100, 20);
-            this.txtPreviewUrl.TabIndex = 3;
+            comboBox_Language.FormattingEnabled = true;
+            comboBox_Language.Location = new Point(146, 120);
+            comboBox_Language.Name = "comboBox_Language";
+            comboBox_Language.Size = new Size(151, 28);
+            comboBox_Language.TabIndex = 2;
             // 
-            // txtCoverUrl
+            // comboBox_Genre
             // 
-            this.txtCoverUrl.Location = new System.Drawing.Point(506, 323);
-            this.txtCoverUrl.Name = "txtCoverUrl";
-            this.txtCoverUrl.Size = new System.Drawing.Size(100, 20);
-            this.txtCoverUrl.TabIndex = 3;
+            comboBox_Genre.FormattingEnabled = true;
+            comboBox_Genre.Location = new Point(146, 159);
+            comboBox_Genre.Name = "comboBox_Genre";
+            comboBox_Genre.Size = new Size(151, 28);
+            comboBox_Genre.TabIndex = 2;
             // 
-            // btnAdd
+            // textBox_file_name
             // 
-            this.btnAdd.Location = new System.Drawing.Point(32, 336);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            textBox_file_name.Location = new Point(146, 276);
+            textBox_file_name.Name = "textBox_file_name";
+            textBox_file_name.Size = new Size(377, 27);
+            textBox_file_name.TabIndex = 1;
             // 
-            // btnUpdate
+            // textBox_ISBN
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(113, 336);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            textBox_ISBN.Location = new Point(146, 237);
+            textBox_ISBN.Name = "textBox_ISBN";
+            textBox_ISBN.Size = new Size(377, 27);
+            textBox_ISBN.TabIndex = 1;
             // 
-            // btnDelete
+            // textBox_Title
             // 
-            this.btnDelete.Location = new System.Drawing.Point(197, 336);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(383, 51);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Title";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(383, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Genre";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(383, 131);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Language";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(383, 172);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Year";
+            textBox_Title.Location = new Point(146, 42);
+            textBox_Title.Name = "textBox_Title";
+            textBox_Title.Size = new Size(377, 27);
+            textBox_Title.TabIndex = 1;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(383, 209);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "ISBN";
+            label6.AutoSize = true;
+            label6.Location = new Point(30, 318);
+            label6.Name = "label6";
+            label6.Size = new Size(107, 20);
+            label6.TabIndex = 0;
+            label6.Text = "Kölcsönzési díj";
             // 
-            // label7
+            // label5
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(383, 252);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "FileURL";
+            label5.AutoSize = true;
+            label5.Location = new Point(30, 279);
+            label5.Name = "label5";
+            label5.Size = new Size(102, 20);
+            label5.TabIndex = 0;
+            label5.Text = "ePub fájl neve";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(30, 240);
+            label4.Name = "label4";
+            label4.Size = new Size(41, 20);
+            label4.TabIndex = 0;
+            label4.Text = "ISBN";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(383, 293);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "PreviewURL";
+            label8.AutoSize = true;
+            label8.Location = new Point(30, 123);
+            label8.Name = "label8";
+            label8.Size = new Size(46, 20);
+            label8.TabIndex = 0;
+            label8.Text = "Nyelv";
             // 
-            // label9
+            // label3
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(383, 330);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 13);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "CoverURL";
+            label3.AutoSize = true;
+            label3.Location = new Point(30, 201);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Kiadás éve";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(30, 162);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Műfaj";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(30, 84);
+            label7.Name = "label7";
+            label7.Size = new Size(53, 20);
+            label7.TabIndex = 0;
+            label7.Text = "Szerző";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(30, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(85, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Könyv címe";
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(20, 20);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new Size(61, 4);
             // 
             // Form_Book
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtCoverUrl);
-            this.Controls.Add(this.txtPreviewUrl);
-            this.Controls.Add(this.txtISBN);
-            this.Controls.Add(this.txtFileUrl);
-            this.Controls.Add(this.txtYear);
-            this.Controls.Add(this.txtLanguage);
-            this.Controls.Add(this.txtGenre);
-            this.Controls.Add(this.txtTitle);
-            this.Controls.Add(this.listBoxBooks);
-            this.Controls.Add(this.pictureBox_exit);
-            this.Controls.Add(this.label1);
-            this.Name = "Form_Book";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_Book";
-            this.Load += new System.EventHandler(this.Form_Book_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(groupBox_KivalasztottKonyv);
+            Controls.Add(panel_vezerlok);
+            Controls.Add(listBox_Konyvek);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Form_Book";
+            Text = "Kölcsönözhető könyvek nyilvántartása";
+            Load += Form_Book_Load;
+            panel_vezerlok.ResumeLayout(false);
+            groupBox_KivalasztottKonyv.ResumeLayout(false);
+            groupBox_KivalasztottKonyv.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_price).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_publish_year).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox_exit;
-        private System.Windows.Forms.ListBox listBoxBooks;
-        private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.TextBox txtGenre;
-        private System.Windows.Forms.TextBox txtLanguage;
-        private System.Windows.Forms.TextBox txtYear;
-        private System.Windows.Forms.TextBox txtISBN;
-        private System.Windows.Forms.TextBox txtFileUrl;
-        private System.Windows.Forms.TextBox txtPreviewUrl;
-        private System.Windows.Forms.TextBox txtCoverUrl;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btnDelete;
+        private ListBox listBox_Konyvek;
+        private Panel panel_vezerlok;
+        private GroupBox groupBox_KivalasztottKonyv;
+        private Button button_insert;
+        private Button button_Update;
+        private Button button_delete;
+        private TextBox textBox_Title;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label7;
+        private Label label1;
+        private ContextMenuStrip contextMenuStrip1;
+        private NumericUpDown numericUpDown_price;
+        private NumericUpDown numericUpDown_publish_year;
+        private ComboBox comboBox_Author;
+        private ComboBox comboBox_Genre;
+        private TextBox textBox_file_name;
+        private TextBox textBox_ISBN;
+        private ComboBox comboBox_Language;
+        private Label label8;
     }
 }

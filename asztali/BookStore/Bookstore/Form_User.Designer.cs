@@ -1,4 +1,4 @@
-﻿namespace Bookstore
+﻿namespace BookStore
 {
     partial class Form_User
     {
@@ -29,225 +29,325 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_User));
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox_exit = new System.Windows.Forms.PictureBox();
-            this.listBoxUsers = new System.Windows.Forms.ListBox();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.txtPasswordHash = new System.Windows.Forms.TextBox();
-            this.txtGoogleId = new System.Windows.Forms.TextBox();
-            this.txtCreatedAt = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.checkBoxIsAdmin = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).BeginInit();
-            this.SuspendLayout();
+            listBox_users = new ListBox();
+            groupBox1 = new GroupBox();
+            textBox_last_name = new TextBox();
+            textBox_first_name = new TextBox();
+            textBox_card4 = new TextBox();
+            textBox_card3 = new TextBox();
+            textBox_card2 = new TextBox();
+            textBox_zip_code = new TextBox();
+            textBox_card1 = new TextBox();
+            textBox_city = new TextBox();
+            textBox_street_adress = new TextBox();
+            textBox_created = new TextBox();
+            textBox_credits = new TextBox();
+            label11 = new Label();
+            textBox_email = new TextBox();
+            label10 = new Label();
+            textBox_username = new TextBox();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
             // 
-            // label1
+            // listBox_users
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(399, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "User";
+            listBox_users.Dock = DockStyle.Left;
+            listBox_users.FormattingEnabled = true;
+            listBox_users.Location = new Point(0, 0);
+            listBox_users.Name = "listBox_users";
+            listBox_users.Size = new Size(214, 363);
+            listBox_users.TabIndex = 0;
+            listBox_users.SelectedIndexChanged += listBox_users_SelectedIndexChanged;
             // 
-            // pictureBox_exit
+            // groupBox1
             // 
-            this.pictureBox_exit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_exit.Image")));
-            this.pictureBox_exit.Location = new System.Drawing.Point(692, 374);
-            this.pictureBox_exit.Name = "pictureBox_exit";
-            this.pictureBox_exit.Size = new System.Drawing.Size(96, 64);
-            this.pictureBox_exit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox_exit.TabIndex = 1;
-            this.pictureBox_exit.TabStop = false;
-            this.pictureBox_exit.Click += new System.EventHandler(this.pictureBox_exit_Click);
+            groupBox1.Controls.Add(textBox_last_name);
+            groupBox1.Controls.Add(textBox_first_name);
+            groupBox1.Controls.Add(textBox_card4);
+            groupBox1.Controls.Add(textBox_card3);
+            groupBox1.Controls.Add(textBox_card2);
+            groupBox1.Controls.Add(textBox_zip_code);
+            groupBox1.Controls.Add(textBox_card1);
+            groupBox1.Controls.Add(textBox_city);
+            groupBox1.Controls.Add(textBox_street_adress);
+            groupBox1.Controls.Add(textBox_created);
+            groupBox1.Controls.Add(textBox_credits);
+            groupBox1.Controls.Add(label11);
+            groupBox1.Controls.Add(textBox_email);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(textBox_username);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(label7);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(214, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(586, 363);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Kiválasztott felhasználó";
             // 
-            // listBoxUsers
+            // textBox_last_name
             // 
-            this.listBoxUsers.FormattingEnabled = true;
-            this.listBoxUsers.Location = new System.Drawing.Point(32, 48);
-            this.listBoxUsers.Name = "listBoxUsers";
-            this.listBoxUsers.Size = new System.Drawing.Size(240, 251);
-            this.listBoxUsers.TabIndex = 2;
-            this.listBoxUsers.SelectedIndexChanged += new System.EventHandler(this.listBoxUsers_SelectedIndexChanged);
+            textBox_last_name.Location = new Point(371, 172);
+            textBox_last_name.Name = "textBox_last_name";
+            textBox_last_name.Size = new Size(176, 27);
+            textBox_last_name.TabIndex = 1;
             // 
-            // txtUsername
+            // textBox_first_name
             // 
-            this.txtUsername.Location = new System.Drawing.Point(471, 45);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(100, 20);
-            this.txtUsername.TabIndex = 3;
+            textBox_first_name.Location = new Point(180, 172);
+            textBox_first_name.Name = "textBox_first_name";
+            textBox_first_name.Size = new Size(176, 27);
+            textBox_first_name.TabIndex = 1;
             // 
-            // txtEmail
+            // textBox_card4
             // 
-            this.txtEmail.Location = new System.Drawing.Point(471, 87);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(100, 20);
-            this.txtEmail.TabIndex = 3;
+            textBox_card4.Location = new Point(471, 273);
+            textBox_card4.Name = "textBox_card4";
+            textBox_card4.Size = new Size(76, 27);
+            textBox_card4.TabIndex = 1;
+            textBox_card4.TextAlign = HorizontalAlignment.Center;
             // 
-            // txtPasswordHash
+            // textBox_card3
             // 
-            this.txtPasswordHash.Location = new System.Drawing.Point(471, 122);
-            this.txtPasswordHash.Name = "txtPasswordHash";
-            this.txtPasswordHash.Size = new System.Drawing.Size(100, 20);
-            this.txtPasswordHash.TabIndex = 3;
+            textBox_card3.Location = new Point(374, 273);
+            textBox_card3.Name = "textBox_card3";
+            textBox_card3.Size = new Size(76, 27);
+            textBox_card3.TabIndex = 1;
+            textBox_card3.TextAlign = HorizontalAlignment.Center;
             // 
-            // txtGoogleId
+            // textBox_card2
             // 
-            this.txtGoogleId.Location = new System.Drawing.Point(471, 164);
-            this.txtGoogleId.Name = "txtGoogleId";
-            this.txtGoogleId.Size = new System.Drawing.Size(100, 20);
-            this.txtGoogleId.TabIndex = 3;
+            textBox_card2.Location = new Point(277, 273);
+            textBox_card2.Name = "textBox_card2";
+            textBox_card2.Size = new Size(76, 27);
+            textBox_card2.TabIndex = 1;
+            textBox_card2.TextAlign = HorizontalAlignment.Center;
             // 
-            // txtCreatedAt
+            // textBox_zip_code
             // 
-            this.txtCreatedAt.Location = new System.Drawing.Point(471, 207);
-            this.txtCreatedAt.Name = "txtCreatedAt";
-            this.txtCreatedAt.Size = new System.Drawing.Size(100, 20);
-            this.txtCreatedAt.TabIndex = 3;
+            textBox_zip_code.Location = new Point(180, 206);
+            textBox_zip_code.Name = "textBox_zip_code";
+            textBox_zip_code.Size = new Size(76, 27);
+            textBox_zip_code.TabIndex = 1;
             // 
-            // btnAdd
+            // textBox_card1
             // 
-            this.btnAdd.Location = new System.Drawing.Point(12, 364);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            textBox_card1.Location = new Point(180, 273);
+            textBox_card1.Name = "textBox_card1";
+            textBox_card1.Size = new Size(76, 27);
+            textBox_card1.TabIndex = 1;
+            textBox_card1.TextAlign = HorizontalAlignment.Center;
             // 
-            // btnUpdate
+            // textBox_city
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(117, 364);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 4;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            textBox_city.Location = new Point(273, 206);
+            textBox_city.Name = "textBox_city";
+            textBox_city.Size = new Size(274, 27);
+            textBox_city.TabIndex = 1;
             // 
-            // btnDelete
+            // textBox_street_adress
             // 
-            this.btnDelete.Location = new System.Drawing.Point(226, 364);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            textBox_street_adress.Location = new Point(180, 240);
+            textBox_street_adress.Name = "textBox_street_adress";
+            textBox_street_adress.Size = new Size(367, 27);
+            textBox_street_adress.TabIndex = 1;
             // 
-            // checkBoxIsAdmin
+            // textBox_created
             // 
-            this.checkBoxIsAdmin.AutoSize = true;
-            this.checkBoxIsAdmin.Location = new System.Drawing.Point(491, 279);
-            this.checkBoxIsAdmin.Name = "checkBoxIsAdmin";
-            this.checkBoxIsAdmin.Size = new System.Drawing.Size(66, 17);
-            this.checkBoxIsAdmin.TabIndex = 5;
-            this.checkBoxIsAdmin.Text = "Is Admin";
-            this.checkBoxIsAdmin.UseVisualStyleBackColor = true;
+            textBox_created.Location = new Point(180, 138);
+            textBox_created.Name = "textBox_created";
+            textBox_created.Size = new Size(288, 27);
+            textBox_created.TabIndex = 1;
             // 
-            // label2
+            // textBox_credits
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(390, 48);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Username";
+            textBox_credits.Location = new Point(180, 104);
+            textBox_credits.Name = "textBox_credits";
+            textBox_credits.Size = new Size(114, 27);
+            textBox_credits.TabIndex = 1;
+            textBox_credits.TextAlign = HorizontalAlignment.Right;
             // 
-            // label3
+            // label11
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(390, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Email";
+            label11.AutoSize = true;
+            label11.Location = new Point(453, 276);
+            label11.Name = "label11";
+            label11.Size = new Size(15, 20);
+            label11.TabIndex = 0;
+            label11.Text = "-";
             // 
-            // label4
+            // textBox_email
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(390, 125);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Passwordhash";
+            textBox_email.Location = new Point(180, 70);
+            textBox_email.Name = "textBox_email";
+            textBox_email.Size = new Size(367, 27);
+            textBox_email.TabIndex = 1;
             // 
-            // label5
+            // label10
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(390, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "GoogleID";
+            label10.AutoSize = true;
+            label10.Location = new Point(356, 276);
+            label10.Name = "label10";
+            label10.Size = new Size(15, 20);
+            label10.TabIndex = 0;
+            label10.Text = "-";
+            // 
+            // textBox_username
+            // 
+            textBox_username.Location = new Point(180, 36);
+            textBox_username.Name = "textBox_username";
+            textBox_username.Size = new Size(367, 27);
+            textBox_username.TabIndex = 1;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(259, 276);
+            label9.Name = "label9";
+            label9.Size = new Size(15, 20);
+            label9.TabIndex = 0;
+            label9.Text = "-";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = SystemColors.ControlDarkDark;
+            label8.Location = new Point(20, 276);
+            label8.Name = "label8";
+            label8.Size = new Size(85, 20);
+            label8.TabIndex = 0;
+            label8.Text = "Kártyaszám";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.ControlDarkDark;
+            label7.Location = new Point(20, 243);
+            label7.Name = "label7";
+            label7.Size = new Size(35, 20);
+            label7.TabIndex = 0;
+            label7.Text = "Cím";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(390, 210);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "CreatedAt";
+            label6.AutoSize = true;
+            label6.ForeColor = SystemColors.ControlDarkDark;
+            label6.Location = new Point(20, 209);
+            label6.Name = "label6";
+            label6.Size = new Size(94, 20);
+            label6.TabIndex = 0;
+            label6.Text = "Településnév";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.ForeColor = SystemColors.ControlDarkDark;
+            label5.Location = new Point(20, 175);
+            label5.Name = "label5";
+            label5.Size = new Size(35, 20);
+            label5.TabIndex = 0;
+            label5.Text = "Név";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = SystemColors.ControlDarkDark;
+            label4.Location = new Point(20, 141);
+            label4.Name = "label4";
+            label4.Size = new Size(127, 20);
+            label4.TabIndex = 0;
+            label4.Text = "Regisztráció ideje";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(20, 107);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Kreditek";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ControlDarkDark;
+            label2.Location = new Point(20, 73);
+            label2.Name = "label2";
+            label2.Size = new Size(74, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Email cím";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(20, 39);
+            label1.Name = "label1";
+            label1.Size = new Size(109, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Felhasználónév";
             // 
             // Form_User
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkBoxIsAdmin);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.txtCreatedAt);
-            this.Controls.Add(this.txtGoogleId);
-            this.Controls.Add(this.txtPasswordHash);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.listBoxUsers);
-            this.Controls.Add(this.pictureBox_exit);
-            this.Controls.Add(this.label1);
-            this.Name = "Form_User";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_User";
-            this.Load += new System.EventHandler(this.Form_User_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_exit)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 363);
+            Controls.Add(groupBox1);
+            Controls.Add(listBox_users);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Form_User";
+            Text = "Felhasználók";
+            Load += Form_User_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox_exit;
-        private System.Windows.Forms.ListBox listBoxUsers;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.TextBox txtPasswordHash;
-        private System.Windows.Forms.TextBox txtGoogleId;
-        private System.Windows.Forms.TextBox txtCreatedAt;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.CheckBox checkBoxIsAdmin;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private ListBox listBox_users;
+        private GroupBox groupBox1;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox textBox_credits;
+        private TextBox textBox_email;
+        private TextBox textBox_username;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private TextBox textBox_last_name;
+        private TextBox textBox_first_name;
+        private TextBox textBox_card1;
+        private TextBox textBox_city;
+        private TextBox textBox_street_adress;
+        private TextBox textBox_created;
+        private Label label9;
+        private TextBox textBox_card4;
+        private TextBox textBox_card3;
+        private TextBox textBox_card2;
+        private Label label11;
+        private Label label10;
+        private TextBox textBox_zip_code;
     }
 }

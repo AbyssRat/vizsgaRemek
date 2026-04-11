@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Bookstore
+namespace BookStore
 {
     public partial class Form_Main : Form
     {
@@ -16,8 +6,15 @@ namespace Bookstore
         {
             InitializeComponent();
         }
+        private void button_Rent_Click(object sender, EventArgs e)
+        {
+            Form_Rent form_Rent = new Form_Rent();
+            this.Hide();
+            form_Rent.ShowDialog();
+            this.Show();
+        }
 
-        private void pictureBox_user_Click(object sender, EventArgs e)
+        private void button_Users_Click(object sender, EventArgs e)
         {
             Form_User form_User = new Form_User();
             this.Hide();
@@ -25,38 +22,28 @@ namespace Bookstore
             this.Show();
         }
 
-        private void pictureBox_book_Click(object sender, EventArgs e)
+        private void button_Konyvek_Click(object sender, EventArgs e)
         {
-            Form_Book form_Book = new Form_Book();
+            Form_Book form_Books = new Form_Book();
             this.Hide();
-            form_Book.ShowDialog();
+            form_Books.ShowDialog();
             this.Show();
         }
 
-        private void pictureBox_rent_Click(object sender, EventArgs e)
-        {
-            Form_Rent form_Rent = new Form_Rent();
-            this.Hide();
-            form_Rent.ShowDialog();
-            this.Show();
-            
-        }
-
-        private void pictureBox_exit_Click(object sender, EventArgs e)
-        {
-            while (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            Application.Exit();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void button_Szerzok_Click(object sender, EventArgs e)
         {
             Form_Authors form_Authors = new Form_Authors();
             this.Hide();
             form_Authors.ShowDialog();
             this.Show();
+        }
+
+        private void button_exit_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Biztosan ki szeretne lépni?", "Kijelentkezés", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }

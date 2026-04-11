@@ -7,44 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BookStore.Mappers;
+using BookStore.Models;
+using BookStore.Services;
+using BookStore.Repository;
 
-namespace Bookstore
+namespace BookStore
 {
     public partial class Form_Rent : Form
     {
+        private readonly RentalsRepository _rentalsRepository = new RentalsRepository();
+        BindingList<UserBookRental> _rentals = new BindingList<UserBookRental>();
         public Form_Rent()
         {
             InitializeComponent();
         }
 
-        private void pictureBox_exit_Click(object sender, EventArgs e)
-        {
-            Form_Rent.ActiveForm.Close();
-        }
-
         private void Form_Rent_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void listBoxRents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
+                        var rentals = _rentalsRepository.GetUserRentals();
+                                    _rentals = new BindingList<UserBookRental>(rentals);
+                                                dataGridView_Kolcsonzesek.DataSource = _rentals;
         }
     }
 }

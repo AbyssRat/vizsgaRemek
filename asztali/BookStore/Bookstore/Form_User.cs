@@ -7,166 +7,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using Bookstore.Service;
-using UserModel = Bookstore.Models.User;
+using BookStore.Models;
+using BookStore.Repository;
 
-namespace Bookstore
+namespace BookStore
 {
     public partial class Form_User : Form
     {
-        private readonly APIService<UserModel> _service;
+        private readonly UserRepository _userRepository = new UserRepository();
+        BindingList<User> _users = new BindingList<User>();
         public Form_User()
         {
             InitializeComponent();
-            _service = new APIService<UserModel>("https://localhost:5001/api/");
         }
 
-        private void pictureBox_exit_Click(object sender, EventArgs e)
+        private void Form_User_Load(object sender, EventArgs e)
         {
-            Form_User.ActiveForm.Close();
+            _felhasznalokBetoltese();
+            listBox_users.DataSource = _users;
         }
 
-        private async void Form_User_Load(object sender, EventArgs e)
+        private void _felhasznalokBetoltese()
         {
-            await LoadUsersAsync();
-        }
-        private async Task LoadUsersAsync()
-        {
-            try
+            _users.Clear();
+            var users = _userRepository.GetAll();
+            foreach (var user in users)
             {
-                var users = await _service.GetAllAsync("users");
-
-                listBoxUsers.DataSource = null;
-                listBoxUsers.DataSource = users;
-                listBoxUsers.DisplayMember = "Username";
-                listBoxUsers.ValueMember = "User_Id";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba a felhasználók betöltésekor: " + ex.Message);
+                _users.Add(user);
             }
         }
 
-        private void listBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBox_users_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            UserModel selected = listBoxUsers.SelectedItem as UserModel;
-
-            if (selected == null)
-                return;
-
-            txtUsername.Text = selected.Username;
-            txtEmail.Text = selected.Email;
-            txtPasswordHash.Text = selected.Password_Hash;
-            txtGoogleId.Text = selected.Google_Id;
-            checkBoxIsAdmin.Checked = selected.Is_Admin;
-            txtCreatedAt.Text = selected.Created_At;
-
-        }
-        private UserModel ReadUserFromForm()
-        {
-            UserModel user = new UserModel();
-
-            user.Username = txtUsername.Text;
-            user.Email = txtEmail.Text;
-            user.Password_Hash = txtPasswordHash.Text;
-            user.Google_Id = txtGoogleId.Text;
-            user.Is_Admin = checkBoxIsAdmin.Checked;
-            user.Created_At = txtCreatedAt.Text;
-
-            return user;
-        }
-
-        private async void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
+            User? selectedUser = listBox_users.SelectedItem as User;
+            if(selectedUser != null)
             {
-                UserModel user = ReadUserFromForm();
-
-                bool ok = await _service.CreateAsync("users", user);
-
-                if (!ok)
+                textBox_username.Text = selectedUser.Username;
+                textBox_email.Text = selectedUser.Email;
+                textBox_credits.Text = selectedUser.Credits.ToString();
+                string[] cardNum= selectedUser.CardNumber?.Split(' ') ?? new string[0];
+                if (cardNum.Length == 4)
                 {
-                    MessageBox.Show("Sikertelen mentés!");
-                    return;
+                    textBox_card1.Text = cardNum[0];
+                    textBox_card2.Text = cardNum[1];
+                    textBox_card3.Text = cardNum[2];
+                    textBox_card4.Text = cardNum[3];
                 }
-
-                await LoadUsersAsync();
-                MessageBox.Show("Felhasználó hozzáadva!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba hozzáadás közben: " + ex.Message);
-            }
-        }
-
-        private async void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                UserModel selected = listBoxUsers.SelectedItem as UserModel;
-
-                if (selected == null)
+                else
                 {
-                    MessageBox.Show("Válassz ki egy felhasználót a módosításhoz!");
-                    return;
+                    textBox_card1.Text = "";
+                    textBox_card2.Text = "";
+                    textBox_card3.Text = "";
+                    textBox_card4.Text = "";
                 }
-
-                UserModel updated = ReadUserFromForm();
-
-                bool ok = await _service.UpdateAsync("users", selected.User_Id, updated);
-
-                if (!ok)
-                {
-                    MessageBox.Show("Sikertelen módosítás!");
-                    return;
-                }
-
-                await LoadUsersAsync();
-                MessageBox.Show("Felhasználó módosítva!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba módosítás közben: " + ex.Message);
-            }
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                UserModel selected = listBoxUsers.SelectedItem as UserModel;
-
-                if (selected == null)
-                {
-                    MessageBox.Show("Válassz ki egy felhasználót a törléshez!");
-                    return;
-                }
-
-                DialogResult confirm = MessageBox.Show(
-                    "Biztosan törlöd ezt a felhasználót?\n\n" + selected.Username,
-                    "Megerősítés",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirm != DialogResult.Yes)
-                    return;
-
-                bool ok = await _service.DeleteAsync("users", selected.User_Id);
-
-                if (!ok)
-                {
-                    MessageBox.Show("Sikertelen törlés!");
-                    return;
-                }
-
-                await LoadUsersAsync();
-                MessageBox.Show("Felhasználó törölve!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba törlés közben: " + ex.Message);
+                textBox_credits.Text = selectedUser.Credits.ToString();
+                textBox_city.Text = selectedUser.City ?? "";
+                textBox_zip_code.Text = selectedUser.ZipCode ?? "";
+                textBox_street_adress.Text = selectedUser.StreetAddress ?? "";
+                textBox_first_name.Text = selectedUser.FirstName ?? "";
+                textBox_last_name.Text = selectedUser.LastName ?? "";
             }
         }
     }

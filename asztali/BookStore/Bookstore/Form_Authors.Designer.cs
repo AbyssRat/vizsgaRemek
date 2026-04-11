@@ -1,4 +1,4 @@
-﻿namespace Bookstore
+﻿namespace BookStore
 {
     partial class Form_Authors
     {
@@ -29,157 +29,123 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Authors));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBoxauthors = new System.Windows.Forms.ListBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtAuthorID = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.txtBio = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+            listBox_authors = new ListBox();
+            groupBox1 = new GroupBox();
+            textBox_bio = new TextBox();
+            label2 = new Label();
+            textBox_author_name = new TextBox();
+            label1 = new Label();
+            panel_vezerlok = new Panel();
+            button1 = new Button();
+            groupBox1.SuspendLayout();
+            panel_vezerlok.SuspendLayout();
+            SuspendLayout();
             // 
-            // pictureBox1
+            // listBox_authors
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(692, 374);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(96, 64);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            listBox_authors.Dock = DockStyle.Left;
+            listBox_authors.FormattingEnabled = true;
+            listBox_authors.Location = new Point(0, 0);
+            listBox_authors.Name = "listBox_authors";
+            listBox_authors.Size = new Size(279, 450);
+            listBox_authors.TabIndex = 0;
+            listBox_authors.SelectedIndexChanged += listBox_authors_SelectedIndexChanged;
             // 
-            // listBoxauthors
+            // groupBox1
             // 
-            this.listBoxauthors.FormattingEnabled = true;
-            this.listBoxauthors.Location = new System.Drawing.Point(32, 48);
-            this.listBoxauthors.Name = "listBoxauthors";
-            this.listBoxauthors.Size = new System.Drawing.Size(240, 251);
-            this.listBoxauthors.TabIndex = 1;
-            this.listBoxauthors.SelectedIndexChanged += new System.EventHandler(this.listBoxauthors_SelectedIndexChanged);
+            groupBox1.Controls.Add(textBox_bio);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(textBox_author_name);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Dock = DockStyle.Fill;
+            groupBox1.Location = new Point(279, 0);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(492, 450);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Kiválasztott szerző";
             // 
-            // btnAdd
+            // textBox_bio
             // 
-            this.btnAdd.Location = new System.Drawing.Point(23, 356);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Location = new System.Drawing.Point(116, 356);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdate.TabIndex = 3;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(208, 356);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(406, 48);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "AuthorID";
+            textBox_bio.AcceptsTab = true;
+            textBox_bio.Location = new Point(36, 124);
+            textBox_bio.Multiline = true;
+            textBox_bio.Name = "textBox_bio";
+            textBox_bio.ScrollBars = ScrollBars.Both;
+            textBox_bio.Size = new Size(444, 177);
+            textBox_bio.TabIndex = 1;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(406, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Name";
+            label2.AutoSize = true;
+            label2.Location = new Point(36, 89);
+            label2.Name = "label2";
+            label2.Size = new Size(112, 20);
+            label2.TabIndex = 0;
+            label2.Text = "Életrajzi adatok";
             // 
-            // label3
+            // textBox_author_name
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(406, 135);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(22, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Bio";
+            textBox_author_name.Location = new Point(169, 36);
+            textBox_author_name.Name = "textBox_author_name";
+            textBox_author_name.Size = new Size(290, 27);
+            textBox_author_name.TabIndex = 1;
             // 
-            // txtAuthorID
+            // label1
             // 
-            this.txtAuthorID.Location = new System.Drawing.Point(475, 45);
-            this.txtAuthorID.Name = "txtAuthorID";
-            this.txtAuthorID.Size = new System.Drawing.Size(100, 20);
-            this.txtAuthorID.TabIndex = 8;
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 39);
+            label1.Name = "label1";
+            label1.Size = new Size(88, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Szerző neve";
             // 
-            // txtName
+            // panel_vezerlok
             // 
-            this.txtName.Location = new System.Drawing.Point(475, 88);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
-            this.txtName.TabIndex = 9;
+            panel_vezerlok.Controls.Add(button1);
+            panel_vezerlok.Dock = DockStyle.Bottom;
+            panel_vezerlok.Location = new Point(279, 353);
+            panel_vezerlok.Name = "panel_vezerlok";
+            panel_vezerlok.Size = new Size(492, 97);
+            panel_vezerlok.TabIndex = 2;
             // 
-            // txtBio
+            // button1
             // 
-            this.txtBio.Location = new System.Drawing.Point(475, 132);
-            this.txtBio.Name = "txtBio";
-            this.txtBio.Size = new System.Drawing.Size(100, 20);
-            this.txtBio.TabIndex = 10;
+            button1.Location = new Point(36, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(423, 47);
+            button1.TabIndex = 0;
+            button1.Text = "Módosítások mentése";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form_Authors
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.txtBio);
-            this.Controls.Add(this.txtName);
-            this.Controls.Add(this.txtAuthorID);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.listBoxauthors);
-            this.Controls.Add(this.pictureBox1);
-            this.Location = new System.Drawing.Point(0, 80);
-            this.Name = "Form_Authors";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form_Authors";
-            this.Load += new System.EventHandler(this.Form_Authors_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(771, 450);
+            Controls.Add(panel_vezerlok);
+            Controls.Add(groupBox1);
+            Controls.Add(listBox_authors);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Name = "Form_Authors";
+            Text = "A könyvek szerői";
+            Load += Form_Authors_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            panel_vezerlok.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBoxauthors;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtAuthorID;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtBio;
+        private ListBox listBox_authors;
+        private GroupBox groupBox1;
+        private TextBox textBox_author_name;
+        private Label label1;
+        private Panel panel_vezerlok;
+        private TextBox textBox_bio;
+        private Label label2;
+        private Button button1;
     }
 }
