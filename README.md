@@ -221,14 +221,14 @@ A frontend alkalmazás a böngészőből érhető el, tipikusan a Vite által bi
 
 ## 🧠 Teljes manuális indítás összefoglalva
 
-`git clone https://github.com/AbyssRat/vizsgaRemek.git`
-`cd backend`
-`npm install`
-`node server.js`
+- `git clone https://github.com/AbyssRat/vizsgaRemek.git`
+- `cd backend`
+- `npm install`
+- `node server.js`
 
-`cd frontend`
-`npm install`
-`npm run dev`
+- `cd frontend`
+- `npm install`
+- `npm run dev`
 
 
 
