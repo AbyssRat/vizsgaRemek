@@ -1,4 +1,11 @@
+## 📊 ER Diagram
+
+```mermaid
 erDiagram
+    USERS ||--o{ USER_BOOKS : rents
+    BOOKS ||--o{ USER_BOOKS : rented
+    BOOKS ||--o{ BOOK_AUTHORS : has
+    AUTHORS ||--o{ BOOK_AUTHORS : writes
 
     USERS {
         int user_id PK
@@ -50,8 +57,3 @@ erDiagram
         int rental_days
         int credits_spent
     }
-
-    USERS ||--o{ USER_BOOKS : rents
-    BOOKS ||--o{ USER_BOOKS : rented
-    BOOKS ||--o{ BOOK_AUTHORS : has
-    AUTHORS ||--o{ BOOK_AUTHORS : writes
