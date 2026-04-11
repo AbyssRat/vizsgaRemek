@@ -2,278 +2,209 @@
 
 A projekt célja egy teljes stack online e-könyv rendszer megvalósítása. Regisztráció után a felhasználók krediteket használva e-könyveket kölcsönözhetnek meghatározott időre, amely alatt online olvashatják a könyvek tartalmát.
 
-A felhasználók a választást azzal segítjük, hogy minden könyvről rövid leírás jelenik meg, valamint az első oldal minden látogató számára ingyenesen megtekinthető.
+A felhasználók döntését könyvleírások, értékelések és további információk (pl. külső hivatkozások) segítik.
 
 A rendszer lehetőséget biztosít könyvek keresésére az alábbi adatok alapján:
 
-* ISBN szám
-* szerző
-* könyv címe
-* kiadás éve
-* nyelv
+- ISBN szám  
+- szerző  
+- könyv címe  
+- kiadás éve  
+- nyelv  
+- műfaj  
 
-A kiválasztott könyvek egy virtuális kosárba helyezhetők, majd a felhasználó a kölcsönzési idő kiválasztása után kreditek felhasználásával bérelheti ki őket.
+A kiválasztott könyvek kölcsönzése kreditek felhasználásával történik, ahol a költség a kölcsönzési idő és a könyv ára alapján kerül kiszámításra.
 
 ---
 
 # 🧍 Csapat
 
-* **Ábel Vilmos** — Frontend
-* **Molnár Dóra** — Adatbázis, Backend, Frontend, Design
-* **Petrény-Barócsy Bálint** — Backend, API
+- **Ábel Vilmos** — Frontend  
+- **Molnár Dóra** — Adatbázis, Backend, Frontend, Design  
+- **Petrény-Barócsy Bálint** — Backend, API  
 
 ---
 
 # 🧩 Fő funkciók
 
-* 👤 Felhasználók regisztrációja és bejelentkezése
-* 📖 E-könyvek nyilvántartása
-* ✍ Szerzők kezelése
-* 🔗 Könyv–szerző kapcsolat (many-to-many)
-* 💳 Kreditekkel történő könyvbérlés
-* ⏱️ Rugalmas kölcsönzési idő (akár 1 nap)
-* ⌛ Minden könyv első oldala ingyenesen megtekinthető
-* 📜 Felhasználói könyvbérlések kezelése
-* 🌐 E-könyvek böngészése és olvasása webes felületen
-* 🗂️ ER diagram és relációs adatbázis-struktúra
+- 👤 Felhasználók regisztrációja és bejelentkezése  
+- 📖 E-könyvek kezelése (cím, műfaj, nyelv, értékelés, ár)  
+- ✍ Szerzők kezelése  
+- 🔗 Könyv–szerző kapcsolat (many-to-many)  
+- 💳 Kreditalapú könyvkölcsönzés (ár × napok)  
+- ⏱️ Rugalmas kölcsönzési idő  
+- 📊 Könyvek értékelése (rating)  
+- 🌐 Külső információk (pl. Wikipedia link)  
+- 📜 Felhasználói kölcsönzések nyilvántartása  
+- 📊 Nézet (view) a kölcsönzések állapotának követésére  
 
 ---
 
-# 📐 Entitások
+# 📐 Adatbázis entitások
 
-| Table Name       | Oszlopok                                                                                                      |
-| ---------------- | ------------------------------------------------------------------------------------------------------------- |
-| **USERS**        | `user_id (PK)`, `username`, `email`, `password_hash`, `credits`, `is_admin`, `created_at`                     |
-| **AUTHORS**      | `author_id (PK)`, `name`, `bio`                                                                               |
-| **BOOKS**        | `book_id (PK)`, `title`, `genre`, `language`, `publish_year`, `ISBN`, `file_url`, `preview_url`, `cover_url`  |
-| **BOOK_AUTHORS** | `book_id (FK)`, `author_id (FK)`                                                                              |
-| **USER_BOOKS**   | `user_book_id (PK)`, `user_id (FK)`, `book_id (FK)`, `start_date`, `rental_days`, `end_date`, `credits_spent` |
+| Tábla | Oszlopok |
+|------|--------|
+| **users** | user_id (PK), username, email, password_hash, credits, is_admin, created_at, first_name, last_name, city, zip_code, street_address, card_number, expiry_date, cvv |
+| **authors** | author_id (PK), name, bio |
+| **books** | book_id (PK), title, genre, language, publish_year, ISBN, file_name, rating, price, more_details_url |
+| **book_authors** | book_id (FK), author_id (FK) |
+| **user_books** | user_book_id (PK), user_id (FK), book_id (FK), start_date, rental_days, credits_spent |
+| **rentals_view** | kölcsönzések összesített nézete |
 
 ---
 
 # 🗂️ Adatbázis struktúra
 
-A rendszer relációs adatbázist használ, amely az alábbi kapcsolatokat tartalmazza:
+users ||--o{ user_books : rents
+books ||--o{ user_books : rented
+books ||--o{ book_authors : has
+authors ||--o{ book_authors : writes
 
-```
-USERS ||--o{ USER_BOOKS : rents
-BOOKS ||--o{ USER_BOOKS : rented
-BOOKS ||--o{ BOOK_AUTHORS : has
-AUTHORS ||--o{ BOOK_AUTHORS : writes
-```
-
-### Táblák
-
-```
-USERS {
-    INT user_id PK
-    VARCHAR username
-    VARCHAR email
-    VARCHAR password_hash
-    INT credits
-    BOOLEAN is_admin
-    TIMESTAMP created_at
-}
-
-AUTHORS {
-    INT author_id PK
-    VARCHAR name
-    TEXT bio
-}
-
-BOOKS {
-    INT book_id PK
-    VARCHAR title
-    ENUM genre
-    ENUM language
-    YEAR publish_year
-    VARCHAR ISBN
-    VARCHAR file_url
-    VARCHAR preview_url
-    VARCHAR cover_url
-}
-
-BOOK_AUTHORS {
-    INT book_id FK
-    INT author_id FK
-}
-
-USER_BOOKS {
-    INT user_book_id PK
-    INT user_id FK
-    INT book_id FK
-    DATE start_date
-    INT rental_days
-    DATE end_date
-    INT credits_spent
-}
-```
 
 ---
 
-# 📡 API Végpontok
+# ⚙️ Speciális adatbázis elemek
 
-## 🔐 Hitelesítés
+## 🔹 Trigger
 
-| Módszer | Végpont              | Hitelesítés | Leírás                              |
-| ------- | -------------------- | ----------- | ----------------------------------- |
-| POST    | `/api/auth/register` | Nem         | Új felhasználó regisztrálása        |
-| POST    | `/api/auth/login`    | Nem         | Felhasználó bejelentkezése          |
-| GET     | `/api/auth/me`       | Igen        | Bejelentkezett felhasználó lekérése |
+A `user_books` beszúrásakor automatikusan kiszámolja:
 
----
+credits_spent = book.price × rental_days
 
-## 👤 Felhasználók
-
-| Módszer | Végpont          | Hitelesítés | Leírás              |
-| ------- | ---------------- | ----------- | ------------------- |
-| GET     | `/api/users`     | Admin       | Összes felhasználó  |
-| GET     | `/api/users/:id` | Igen        | Felhasználó adatai  |
-| DELETE  | `/api/users/:id` | Admin       | Felhasználó törlése |
 
 ---
 
-## 📚 Könyvek
+## 🔹 View (rentals_view)
 
-| Módszer | Végpont          | Hitelesítés | Leírás           |
-| ------- | ---------------- | ----------- | ---------------- |
-| GET     | `/api/books`     | Nem         | Összes könyv     |
-| GET     | `/api/books/:id` | Nem         | Könyv részletek  |
-| POST    | `/api/books`     | Admin       | Könyv hozzáadása |
-| PUT     | `/api/books/:id` | Admin       | Könyv módosítása |
-| DELETE  | `/api/books/:id` | Admin       | Könyv törlése    |
+A nézet:
 
----
-
-## 📄 Könyv oldalak / előnézet
-
-| Módszer | Végpont                      | Hitelesítés | Leírás                   |
-| ------- | ---------------------------- | ----------- | ------------------------ |
-| GET     | `/api/books/:id/pages/1`     | Nem         | Ingyenes első oldal      |
-| GET     | `/api/books/:id/pages/:page` | Igen        | Könyv oldal megtekintése |
+- kiszámolja a lejárati dátumot  
+- meghatározza az állapotot:
+  - `active`
+  - `finished`  
+- összekapcsolja:
+  - könyvek
+  - szerzők
+  - kölcsönzések  
 
 ---
 
-## 📦 Könyvbérlés
+# 📡 API végpontok
 
-| Módszer | Végpont            | Hitelesítés | Leírás             |
-| ------- | ------------------ | ----------- | ------------------ |
-| POST    | `/api/rentals`     | Igen        | Könyv kölcsönzése  |
-| GET     | `/api/rentals/my`  | Igen        | Saját kölcsönzések |
-| GET     | `/api/rentals`     | Admin       | Összes kölcsönzés  |
-| DELETE  | `/api/rentals/:id` | Igen        | Kölcsönzés törlése |
+## 🔐 Auth
 
----
-
-## 🧪 Segédfunkciók
-
-| Módszer | Végpont       | Hitelesítés | Leírás          |
-| ------- | ------------- | ----------- | --------------- |
-| GET     | `/api/health` | Nem         | Szerver állapot |
+- POST `/api/auth/register`
+- POST `/api/auth/login`
+- GET `/api/auth/me`
 
 ---
 
-# 🔑 Hitelesítési fejléc
+## 👤 Users
 
-A védett végpontokhoz JWT token szükséges.
-
-```
-Authorization: Bearer SAJÁT_JWT_TOKEN
-```
+- GET `/api/users`
+- GET `/api/users/:id`
+- DELETE `/api/users/:id`
 
 ---
 
-# 🛠️ Felhasznált technológiák
+## 📚 Books
 
-### 🗄️ Adatbázis
+- GET `/api/books`
+- GET `/api/books/:id`
+- POST `/api/books`
+- PUT `/api/books/:id`
+- DELETE `/api/books/:id`
 
-* **MySQL**
-* 3NF normalizált adatmodell
-* ER diagram
+---
 
-### ⚙️ Backend
+## 📦 Rentals
 
-* **Node.js**
-* **Express**
-* REST API
-* JWT alapú hitelesítés
+- POST `/api/rentals`
+- GET `/api/rentals/my`
+- GET `/api/rentals`
+- DELETE `/api/rentals/:id`
 
-### 🌐 Frontend
+---
 
-* **React**
-* Reszponzív webes felület
-* E-könyvek böngészése és olvasása
+## 🧪 System
+
+- GET `/api/health`
+
+---
+
+# 🔐 Authentication
+
+A védett végpontokhoz JWT token szükséges:
+
+Authorization: Bearer TOKEN
+
+
+---
+
+# 🛠️ Technológiák
+
+## 🗄️ Adatbázis
+- MySQL / MariaDB  
+- Trigger  
+- View  
+- 3NF normalizált struktúra  
+
+## ⚙️ Backend
+- Node.js  
+- Express  
+- JWT auth  
+
+## 🌐 Frontend
+- React  
+
+## 💻 Desktop
+- WinForms (.NET 8)
 
 ---
 
 # 🔐 Jogosultságok
 
-## 👤 Felhasználó
-
-* E-könyvek böngészése
-* Könyvek kosárba helyezése
-* Könyvek kölcsönzése kreditek felhasználásával
-* Saját kölcsönzések megtekintése
-* Könyvek olvasása a kölcsönzési idő alatt
-
----
+## 👤 User
+- könyvek böngészése  
+- kölcsönzés  
+- saját kölcsönzések megtekintése  
+- profil kezelés  
 
 ## 🛡️ Admin
-
-* Könyvek hozzáadása / módosítása / törlése
-* Szerzők kezelése
-* Felhasználók kezelése
-* Kölcsönzések kezelése
+- könyvek kezelése  
+- szerzők kezelése  
+- felhasználók kezelése  
+- kölcsönzések kezelése  
 
 ---
 
-# 🚀 Telepítés és futtatás
+# 🚀 Telepítés
 
-A projekt futtatásához szükséges lépések:
+## 1. Repo klónozás
 
-### 1️⃣ Repository letöltése
-
-```
 git clone https://github.com/AbyssRat/vizsgaRemek.git
-```
 
-vagy a repository letöltése ZIP formátumban.
 
----
+## 2. Adatbázis import
 
-### 2️⃣ Projekt mappa megnyitása
+Importáld:
 
-Navigálj a letöltött projekt mappájába.
+book_rental_app.sql
 
----
 
-### 3️⃣ Indítás
+## 3. Indítás
 
-A projekt indításához futtasd az alábbi fájlt:
-
-```
 indit.bat
-```
 
-Ez automatikusan elindítja:
-
-* a backend szervert
-* a frontend alkalmazást
-
----
-
-### 4️⃣ Alkalmazás megnyitása
-
-A webes felület ezután elérhető lesz a böngészőben.
 
 ---
 
 # 🎯 Projekt célja
 
-A projekt célja egy **online e-könyv platform megvalósítása**, amely bemutatja:
+A rendszer bemutatja:
 
-* relációs adatbázis-tervezést (3NF)
-* ER diagram használatát
-* REST API alapú backend-frontend kommunikációt
-* felhasználói hitelesítést és jogosultságkezelést
-* digitális könyvkölcsönzés működését
+- relációs adatbázis-tervezést  
+- trigger és view használatot  
+- REST API fejlesztést  
+- frontend-backend kapcsolatot  
+- desktop + web integrációt
