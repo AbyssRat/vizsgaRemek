@@ -1,5 +1,7 @@
-﻿using Bookstore.Service;
-
+﻿using BookStore.Mappers;
+using BookStore.Models;
+using BookStore.Services;
+using BookStore.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,183 +11,99 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Bookstore.Models;
 
-namespace Bookstore
+namespace BookStore
 {
     public partial class Form_Book : Form
     {
-        private readonly APIService<Book> _service;
+        BookRepository _repository = new BookRepository();
+        private BindingList<Book> _books = new BindingList<Book>();
         public Form_Book()
         {
             InitializeComponent();
-            _service = new APIService<Book>("http://localhost:5000/api/");
         }
 
-        private void pictureBox_exit_Click(object sender, EventArgs e)
+        private void button_Update_Click(object sender, EventArgs e)
         {
-            Form_Book.ActiveForm.Close();
+            Book book = _formadatokEllenorzese();
+            _repository.Update(book);
+            _konyvadatokBetoltese();
         }
 
-        private async void Form_Book_Load(object sender, EventArgs e)
+        private Book _formadatokEllenorzese()
         {
-            await LoadBooksAsync();
-        }
-        private async Task LoadBooksAsync()
-        {
-            try
+            Book book = new Book
             {
-                var books = await _service.GetAllAsync("books");
-
-                listBoxBooks.DataSource= null;
-                listBoxBooks.DataSource = books;
-                listBoxBooks.DisplayMember = "Title"; // A könyv címét jeleníti meg a listában
-                listBoxBooks.ValueMember = "Book_Id"; // A könyv azonosítóját használja értékként
-
-
-
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Error loading books: " + ex.Message);
-            }
-        }
-
-        private void listBoxBooks_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBoxBooks.SelectedItem is Book selected)
-            {
-                txtTitle.Text = selected.Title;
-                txtGenre.Text = selected.Genre;
-                txtLanguage.Text = selected.Language;
-                txtYear.Text = selected.Publish_Year.ToString();
-                txtISBN.Text = selected.ISBN.ToString();
-                txtFileUrl.Text = selected.File_Url;
-                txtPreviewUrl.Text = selected.Preview_Url;
-                txtCoverUrl.Text = selected.Cover_Url;
-
-            }
-
-        }
-
-        private async void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var book = ReadBookFromForm(forUpdate: false);
-
-                bool ok = await _service.CreateAsync("books", book);
-
-                if (!ok)
-                {
-                    MessageBox.Show("Sikertelen mentés (POST)!");
-                    return;
-                }
-
-                await LoadBooksAsync();
-                MessageBox.Show("Könyv hozzáadva!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba hozzáadás közben: " + ex.Message);
-            }
-        }
-
-        private async void btnUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Book selected = listBoxBooks.SelectedItem as Book;
-
-                if (selected == null)
-                {
-                    MessageBox.Show("Válassz ki egy könyvet a módosításhoz!");
-                    return;
-                }
-
-                var updated = ReadBookFromForm(true);
-                int id = selected.Book_Id;
-
-                bool ok = await _service.UpdateAsync("books", id, updated);
-
-                if (!ok)
-                {
-                    MessageBox.Show("Sikertelen módosítás (PUT)!");
-                    return;
-                }
-
-                await LoadBooksAsync();
-                MessageBox.Show("Könyv módosítva!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba módosítás közben: " + ex.Message);
-            }
-        }
-
-        private async void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Book selected = listBoxBooks.SelectedItem as Book;
-
-                if (selected == null)
-                {
-                    MessageBox.Show("Válassz ki egy könyvet a törléshez!");
-                    return;
-                }
-
-                var confirm = MessageBox.Show(
-                    "Biztosan törlöd ezt a könyvet?\n\n" + selected.Title,
-                    "Megerősítés",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-
-                if (confirm != DialogResult.Yes)
-                    return;
-
-                bool ok = await _service.DeleteAsync("books", selected.Book_Id);
-
-                if (!ok)
-                {
-                    MessageBox.Show("Sikertelen törlés (DELETE)!");
-                    return;
-                }
-
-                await LoadBooksAsync();
-                MessageBox.Show("Könyv törölve!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Hiba törlés közben: " + ex.Message);
-            }
-        }
-        private Book ReadBookFromForm(bool forUpdate)
-        {
-            // minimál validáció
-            if (string.IsNullOrWhiteSpace(txtTitle.Text))
-                throw new Exception("A cím (Title) kötelező!");
-
-            if (!int.TryParse(txtYear.Text, out int year))
-                throw new Exception("A Publish_Year legyen szám!");
-
-            // ISBN nálad int, szóval próbáljuk parse-olni:
-            if (!int.TryParse(txtISBN.Text, out int isbn))
-                throw new Exception("Az ISBN legyen szám!");
-
-            return new Book
-            {
-                // Book_Id-t update-nél az endpoint id-jából kezeljük, itt nem muszáj beállítani
-                Title = txtTitle.Text.Trim(),
-                Genre = txtGenre.Text.Trim(),
-                Language = txtLanguage.Text.Trim(),
-                Publish_Year = year,
-                ISBN = isbn,
-                File_Url = txtFileUrl.Text.Trim(),
-                Preview_Url = txtPreviewUrl.Text.Trim(),
-                Cover_Url = txtCoverUrl.Text.Trim()
+                Title = textBox_Title.Text,
+                AuthorName = comboBox_Author.SelectedItem?.ToString(),
+                Genre = comboBox_Genre.SelectedItem?.ToString(),
+                Language = comboBox_Language.SelectedItem?.ToString(),
+                PublishYear = (int)numericUpDown_publish_year.Value,
+                ISBN = textBox_ISBN.Text,
+                FileName = textBox_file_name.Text,
+                Rating = 1, // Alapértelmezett érték, később módosítható
+                Price = numericUpDown_price.Value
             };
+            return book;
+        }
+
+        private void Form_Book_Load(object sender, EventArgs e)
+        {
+            numericUpDown_publish_year.Minimum = 1900;
+            numericUpDown_publish_year.Maximum = DateTime.Now.Year;
+            numericUpDown_publish_year.Value = DateTime.Now.Year;
+            numericUpDown_price.Minimum = 1;
+            numericUpDown_price.Maximum = 100000;
+            numericUpDown_price.DecimalPlaces = 0;
+            numericUpDown_price.Value = 100;
+            _konyvadatokBetoltese();
+            comboBox_Genre.DataSource = new List<string> { "Fantasy", "Science Fiction", "Romance", "Thriller", "Non-Fiction" };
+            comboBox_Language.DataSource = new List<string> { "English", "Spanish", "French", "German", "Chinese" };
+        }
+
+        private void _konyvadatokBetoltese()
+        {
+            try
+            {
+                var frissLista = _repository.GetAll();
+
+                _books.Clear(); // Nem hozunk létre új példányt, csak ürítjük a régit
+                foreach (var book in frissLista)
+                {
+                    _books.Add(book);
+                }
+                comboBox_Author.DataSource = _books.Select(b => b.AuthorName).Distinct().ToList();
+
+                // Ha az első alkalommal vagyunk, hozzárendeljük a forrást
+                if (listBox_Konyvek.DataSource == null)
+                {
+                    listBox_Konyvek.DataSource = _books;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Hiba a betöltés során: {ex.Message}", "Hiba", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_insert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Book book = _formadatokEllenorzese();
+                _repository.InsertBookWithAuthor(book); // Az új, tranzakciós metódus
+                _konyvadatokBetoltese();
+                MessageBox.Show("Sikeres mentés!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Hiba történt: " + ex.Message);
+            }
+        }
+
+        private void button_delete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

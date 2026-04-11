@@ -4,24 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Bookstore.Models
+namespace BookStore.Models
 {
-    internal class Book
+    public class Book
     {
-        //book_id	title	genre	language	publish_year	ISBN	file_url	preview_url	cover_url	
+        public int BookId { get; set; }
 
-        public int Book_Id { get; set; }
-        public string Title { get; set; }
+        public string? Title { get; set; }
+        public string? AuthorName { get; set; }
 
-        public string Genre { get; set; }
-        public string Language { get; set; }
+        public string? Genre { get; set; }          // nullable, mert DEFAULT NULL
 
-        public int Publish_Year { get; set; }
-        public int ISBN { get; set; }
-        public string File_Url { get; set; }
-        public string Preview_Url { get; set; }
-        public string Cover_Url{ get; set; }
+        public string? Language { get; set; }    // nullable
 
+        public int? PublishYear { get; set; }      // DEFAULT NULL
 
+        public string? ISBN { get; set; } = string.Empty;
+        public string? FileName { get; set; } = string.Empty;
+
+        public int Rating { get; set; } = 1;
+
+        public decimal Price { get; set; } = 100.00m;
+
+        override public string ToString()
+            => $"{Title} ({AuthorName})";
     }
 }
