@@ -20,7 +20,7 @@ A kiválasztott könyvek kölcsönzése kreditek felhasználásával történik,
 # 🧍 Csapat
 
 - **Ábel Vilmos** — Frontend  
-- **Molnár Dóra** — Adatbázis, Backend, Frontend, Design  
+- **Molnár Dóra** — Adatbázis, Backend, Frontend
 - **Petrény-Barócsy Bálint** — Backend, API  
 
 ---
